@@ -1,5 +1,6 @@
 ﻿@@include('../../node_modules/swiper/swiper-bundle.min.js')
 @@include('module/_tabs.js')
+@@include('module/_to-top-btn.js')
 
 
 window.addEventListener("DOMContentLoaded", () => {

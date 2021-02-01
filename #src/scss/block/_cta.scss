@@ -1,0 +1,44 @@
+.cta {
+  text-align: center;
+  background: rgb(56, 141, 242);
+  background: radial-gradient(circle, rgba(56, 141, 242, 1) 25%, rgba(29, 69, 131, 1) 100%);
+}
+
+.cta__title {}
+
+._cta-title {
+  @include adaptiv-font(25, 20);
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+
+  &.black {
+    color: #000000;
+  }
+
+  &.white {
+    color: #ffffff;
+  }
+}
+
+._cta-sub-title {
+  @include adaptiv-font(18, 15);
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+
+  &.black {
+    color: #000000;
+  }
+
+  &.white {
+    color: #ffffff;
+  }
+}
+
+.cta__input {
+  border-radius: 5px;
+  height: 30px;
+  max-width: 400px;
+  width: 100%;
+}
