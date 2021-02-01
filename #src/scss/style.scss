@@ -12,11 +12,14 @@
 @import "nullstyle.scss";
 @import "fonts.scss";
 
+@import "../../node_modules/swiper/swiper-bundle.css";
+
 
 @import "./block/_general.scss";
 @import "./block/_nav.scss";
 @import "./block/_header.scss";
 @import "./block/_footer.scss";
 @import "./block/_card.scss";
+@import "./block/_tabs.scss";
 
 

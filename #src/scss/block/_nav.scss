@@ -1,5 +1,6 @@
 .nav {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .nav__list {
@@ -18,6 +19,9 @@
   color: $textColor;
   font-weight: 300;
   transition: .3s;
+  text-transform: uppercase;
+  @include adaptiv-font(18, 14);
+  white-space: nowrap;
 
   &::after {
     position: absolute;
