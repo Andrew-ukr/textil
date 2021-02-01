@@ -1,0 +1,105 @@
+$maxWidth: 1360;
+
+@mixin adaptiv-font($pcSize, $mobSize) {
+	$addSize: $pcSize - $mobSize;
+	$maxWidth: $maxWidth - 320;
+	font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
+
+$textColor: #343434;
+$hoverColor: #5b5d84;
+$backgroundColor: #f3f3f3;
+$greenColor: #69b815;
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 400;
+	@include adaptiv-font(14, 12);
+	color: $textColor;
+
+	&.lock {
+		overflow: hidden;
+	}
+}
+
+
+.container {
+	max-width: 1360px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+.text-hover {
+	color: $textColor;
+	transition: .3s;
+
+	&:hover,
+	&:active,
+	&:focus {
+		transition: .3s;
+		color: $hoverColor;
+	}
+}
+
+._hero-title {
+	@include adaptiv-font(40, 30);
+	font-weight: 300;
+	text-transform: uppercase;
+
+	&.black {
+		color: #000000;
+	}
+
+	&.white {
+		color: #ffffff;
+	}
+}
+
+._card-title {
+	text-transform: uppercase;
+	font-weight: 400;
+	@include adaptiv-font(15, 13);
+	transition: .3s;
+	color: $hoverColor;
+
+	&:hover,
+	&:active,
+	&:focus {
+		transition: .3s;
+		text-decoration: underline;
+	}
+}
+
+._product-title {
+	text-transform: uppercase;
+	font-weight: 300;
+	color: $hoverColor;
+	@include adaptiv-font(30, 16);
+	transition: .3s;
+}
+
+._btn {
+	background-color: $hoverColor;
+	border-radius: 5px;
+	padding: 10px 20px;
+	color: #ffffff;
+	transition: .3s;
+	text-transform: uppercase;
+
+	&:hover,
+	&:active,
+	&:focus {
+		transition: .3s;
+		background-color: darken($color: $hoverColor, $amount: 15%);
+	}
+}
+
+.ui {
+	padding: 50px;
+}
