@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./css/style.min.css">
+  <title>Домашній текстиль Продукт 1</title>
+</head>
+
+<body>
+  <header class="header">
+    @@include('template/_header-top.html')
+
+  </header>
+
+  <main>
+    <section class="product">
+      <div class="container">
+        <div class="product__wrapper">
+
+          <div class="product__block">
+            <div class="product__top-slider-container swiper-container">
+              <div class="product__top-slider-wrapper swiper-wrapper">
+                <div class="product__top-swiper swiper-slide"><img src="img/product/prod01/1.jpg" alt=""></div>
+                <div class="product__top-swiper swiper-slide"><img src="img/product/prod01/2.jpg" alt=""></div>
+                <div class="product__top-swiper swiper-slide"><img src="img/product/prod01/3.jpg" alt=""></div>
+                <div class="product__top-swiper swiper-slide"><img src="img/product/prod01/4.jpg" alt=""></div>
+                <div class="product__top-swiper swiper-slide"><img src="img/product/prod01/5.jpg" alt=""></div>
+                <div class="product__top-swiper swiper-slide"><img src="img/product/prod01/6.jpg" alt=""></div>
+              </div>
+
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+
+            <div class="product__down-slider-container swiper-container">
+              <div class="product__down-slider-wrapper swiper-wrapper">
+                <div class="product__down-swiper swiper-slide"><img src="img/product/prod01/1-small.jpg" alt=""></div>
+                <div class="product__down-swiper swiper-slide"><img src="img/product/prod01/2-small.jpg" alt=""></div>
+                <div class="product__down-swiper swiper-slide"><img src="img/product/prod01/3-small.jpg" alt=""></div>
+                <div class="product__down-swiper swiper-slide"><img src="img/product/prod01/4-small.jpg" alt=""></div>
+                <div class="product__down-swiper swiper-slide"><img src="img/product/prod01/5-small.jpg" alt=""></div>
+                <div class="product__down-swiper swiper-slide"><img src="img/product/prod01/6-small.jpg" alt=""></div>
+              </div>
+
+            </div>
+
+
+          </div>
+
+          <div class="product__block">
+            <div class="product__title _product-title">
+              КОМПЛЕКТ ПОСТІЛЬНОЇ БІЛИЗНИ З САТИНУ СЬЮЗІ
+            </div>
+
+            <div class="product__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus libero et dolor amet qui, dolores voluptatibus earum nihil accusamus ullam quos maiores quibusdam saepe eligendi labore possimus doloremque placeat enim?</div>
+            <div class="product__availability cart__availability">В наявності</div>
+
+            <div class="product__purchase">
+              <div class="product__price">500 грн / комплет</div>
+              <div class="product__quantity">
+                <div class="product__quantity-minus">-</div>
+                <div class="product__quantity-number">1</div>
+                <div class="product__quantity-plus">+</div>
+              </div>
+              <button class="product__btn _btn">до кошика</button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="revised">
+      <div class="container">
+        <h4 class="cta__title _cta-sub-title">Переглянуті раніше</h4>
+
+        <div class="revised-container swiper-container">
+          <div class="revised-wrapper swiper-wrapper">
+
+            <div class="revised__item swiper-slide card">
+              <div class="card__inner">
+                <div class="card__img-block">
+                  <a href="card__img-link">
+                    <img class="card__img" src="img/product/prod01/1.jpg" alt="">
+                  </a>
+                </div>
+                <div class="card__content">
+                  <a href="#" class="cart__title _card-title">Сьюзі (Полуторний)</a>
+                  <div class="cart__price">500 <span>грн</span></div>
+                  <div class="cart__availability">В наявності</div>
+                </div>
+                <div class="cart__btn-wrapper">
+                  <button class="cart__btn _btn">
+                    До кошика
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="revised__item swiper-slide card">
+              <div class="card__inner">
+                <div class="card__img-block">
+                  <a href="card__img-link">
+                    <img class="card__img" src="img/product/prod01/1.jpg" alt="">
+                  </a>
+                </div>
+                <div class="card__content">
+                  <a href="#" class="cart__title _card-title">Сьюзі (Полуторний)</a>
+                  <div class="cart__price">500 <span>грн</span></div>
+                  <div class="cart__availability">В наявності</div>
+                </div>
+                <div class="cart__btn-wrapper">
+                  <button class="cart__btn _btn">
+                    До кошика
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  @@include('template/_footer.html')
+
+  <script src="./js/script.min.js"></script>
+
+</body>
+
+</html>

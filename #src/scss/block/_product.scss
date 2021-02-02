@@ -1,0 +1,145 @@
+.product {}
+
+.container {}
+
+.product__wrapper {
+  display: flex;
+}
+
+.product__block {
+  display: flex;
+  flex-direction: column;
+
+  &:nth-child(1) {
+    width: 450px;
+    flex-direction: row-reverse;
+
+  }
+
+  &+& {
+    margin-left: 50px;
+  }
+}
+
+.product__top-slider-container {
+  width: 350px;
+  margin-bottom: 30px;
+}
+
+.swiper-container {}
+
+.product__top-slider-wrapper {}
+
+.swiper-wrapper {}
+
+.product__top-swiper {
+  display: block;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.swiper-slide {}
+
+.swiper-button-prev {}
+
+.swiper-button-next {}
+
+.product__down-slider-container {
+  width: 120px;
+  height: 335px;
+}
+
+.product__down-slider-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.product__down-swiper {
+  display: block;
+  border: 2px solid transparent;
+  transition: .3s;
+  height: 80px;
+  width: 80px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &.swiper-slide-thumb-active {
+    transition: .3s;
+    border: 2px solid deepskyblue;
+  }
+}
+
+.product__title {
+  margin-bottom: 50px;
+}
+
+._product-title {}
+
+.product__description {
+  @include adaptiv-font(18, 14);
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+.product__availability {
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.cart__availability {}
+
+.product__purchase {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product__price {
+  @include adaptiv-font(28, 18);
+}
+
+.product__quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(224, 224, 224);
+  width: 100px;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: .3s;
+  text-transform: uppercase;
+}
+
+.product__quantity-minus {
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  padding: 10px 0px;
+  @include adaptiv-font(18, 16);
+}
+
+.product__quantity-number {
+  text-align: center;
+  width: 100%;
+  padding: 10px 0px;
+}
+
+.product__quantity-plus {
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  padding: 10px 0px;
+  @include adaptiv-font(18, 16);
+}
+
+.product__btn {}

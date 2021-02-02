@@ -44,4 +44,29 @@ window.addEventListener("DOMContentLoaded", () => {
 
   });
 
+
+
+  const productDownSlider = new Swiper('.product__down-slider-container', {
+    direction: 'vertical',
+    slidesPerView: 4,
+    spaceBetween: 0,
+    freeMode: true,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+  });
+
+  const productTopSlider = new Swiper('.product__top-slider-container', {
+    slidesPerView: 1,
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    thumbs: {
+      swiper: productDownSlider
+    }
+
+  });
+
 });
