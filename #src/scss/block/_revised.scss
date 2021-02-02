@@ -1,0 +1,39 @@
+.revised-container {
+  padding-bottom: 50px;
+}
+
+.revised__item {
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .3s;
+
+    .blog__img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.revised__img-link {
+  display: block;
+  height: 200px;
+  overflow: hidden;
+}
+
+.revised__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .3s;
+}
+
+.revised__title {
+  display: block;
+  text-align: center;
+  @include adaptiv-font(15, 14);
+  font-weight: 300;
+  padding: 20px 10px;
+  color: $textColor;
+}

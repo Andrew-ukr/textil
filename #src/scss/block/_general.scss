@@ -19,7 +19,7 @@ html {
 body {
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: 400;
-	@include adaptiv-font(14, 13);
+	@include adaptiv-font(14, 14);
 	color: $textColor;
 
 	&.lock {
@@ -67,7 +67,7 @@ section {
 ._card-title {
 	text-transform: uppercase;
 	font-weight: 400;
-	@include adaptiv-font(15, 13);
+	@include adaptiv-font(15, 14);
 	transition: .3s;
 	color: $hoverColor;
 

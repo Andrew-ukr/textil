@@ -92,4 +92,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
   });
 
+  const revisedSlider = new Swiper('.revised-container', {
+    slidesPerView: 4,
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+  });
+
 });
