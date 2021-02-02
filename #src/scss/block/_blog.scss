@@ -1,0 +1,58 @@
+.blog {}
+
+.container {}
+
+.cta__title {}
+
+._cta-sub-title {}
+
+.blog-container {}
+
+.swiper-container {}
+
+.blog-wrapper {}
+
+.swiper-wrapper {}
+
+.swiper-slide {}
+
+.blog__item {
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .3s;
+
+    .blog__img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.blog__img-link {
+  display: block;
+  height: 200px;
+  overflow: hidden;
+}
+
+.blog__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .3s;
+
+}
+
+.blog__title {
+  display: block;
+  text-align: center;
+  @include adaptiv-font(15, 14);
+  font-weight: 300;
+  padding: 20px 10px;
+  color: $textColor;
+}
+
+.swiper-button-prev {}
+
+.swiper-button-next {}

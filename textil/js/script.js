@@ -63,17 +63,28 @@ window.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener("DOMContentLoaded", () => {
   'use strict';
+
   tabsInit();
+
   const heroSlider = new Swiper('.hero__container', {
-    // Optional parameters
     loop: true,
 
-    // If we need pagination
     pagination: {
       el: '.swiper-pagination',
     },
 
-    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+  });
+
+  const blogSlider = new Swiper('.blog-container', {
+    loop: true,
+    slidesPerView: 4,
+    spaceBetween: 10,
+
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
