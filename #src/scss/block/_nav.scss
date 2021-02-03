@@ -15,11 +15,10 @@
   @media (min-width: 405px) {
     justify-content: center;
   }
-
 }
 
 .nav__item {
-  &+& {
+  &+& {0
     margin-left: 30px;
   }
 }
