@@ -6,7 +6,8 @@
 window.addEventListener("DOMContentLoaded", () => {
   'use strict';
 
-  tabsInit();
+  tabsInit('.tabs__header-item','.tabs__content-item');
+  tabsInit('.product__tabs-list-item','.product__tabs-content-item');
 
   const heroSlider = new Swiper('.hero__container', {
     loop: true,
@@ -44,11 +45,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   });
 
-
-
   const productDownSlider = new Swiper('.product__down-slider-container', {
     direction: 'vertical',
-    slidesPerView: 4,
+    slidesPerView: 5,
     spaceBetween: 0,
     freeMode: true,
     watchSlidesVisibility: true,

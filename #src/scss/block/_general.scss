@@ -10,7 +10,7 @@ $maxWidth: 1920;
 $textColor: #343434;
 $hoverColor: #5b5d84;
 $backgroundColor: #f3f3f3;
-$greenColor: #69b815;
+$greenColor: #6ec342;
 
 html {
 	scroll-behavior: smooth;
@@ -88,7 +88,7 @@ section {
 }
 
 ._btn {
-	background-color: $hoverColor;
+	background-color: $greenColor;
 	border-radius: 5px;
 	padding: 10px 20px;
 	color: #ffffff;
@@ -99,7 +99,7 @@ section {
 	&:active,
 	&:focus {
 		transition: .3s;
-		background-color: darken($color: $hoverColor, $amount: 15%);
+		background-color: darken($color: $greenColor, $amount: 10%);
 	}
 }
 

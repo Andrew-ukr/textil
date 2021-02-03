@@ -122,9 +122,11 @@
 .cart__availability {
   position: relative;
   color: #969696;
+  text-decoration: line-through;
 
   &.avalible {
     color: $greenColor;
+    text-decoration: unset;
 
     &::after {
       background-color: $greenColor;

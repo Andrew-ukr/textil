@@ -4,6 +4,14 @@
 
 .product__wrapper {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: unset;
+  }
 }
 
 .product__block {
@@ -11,19 +19,30 @@
   flex-direction: column;
 
   &:nth-child(1) {
-    width: 450px;
+    width: 300px;
     flex-direction: row-reverse;
 
+    @media (min-width: 600px) {
+      width: 550px;
+    }
   }
 
   &+& {
-    margin-left: 50px;
+    margin-top: 20px;
+
+    @media (min-width: 1024px) {
+      margin-top: 0px;
+      margin-left: 50px;
+    }
   }
 }
 
 .product__top-slider-container {
-  width: 350px;
-  margin-bottom: 30px;
+  width: 300px;
+
+  @media (min-width: 600px) {
+    width: 450px;
+  }
 }
 
 .swiper-container {}
@@ -50,8 +69,13 @@
 .swiper-button-next {}
 
 .product__down-slider-container {
-  width: 120px;
-  height: 335px;
+  display: none;
+
+  @media (min-width: 600px) {
+    display: block;
+    width: 100px;
+    height: 450px;
+  }
 }
 
 .product__down-slider-wrapper {
@@ -75,7 +99,7 @@
 
   &.swiper-slide-thumb-active {
     transition: .3s;
-    border: 2px solid deepskyblue;
+    border: 2px solid #007AFF;
   }
 }
 
@@ -85,24 +109,41 @@
 
 ._product-title {}
 
+.product__item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+.product__select {
+  border-radius: 5px;
+  border: 1px solid #c0c0c0;
+  @include adaptiv-font(14, 14);
+  padding: 7px 0;
+  width: 150px;
+  background-color: $backgroundColor;
+}
+
+.product__item-title {
+  margin-right: 20px;
+  @include adaptiv-font(16, 15);
+  color: $hoverColor;
+  width: 100px;
+}
+
 .product__description {
-  @include adaptiv-font(18, 14);
-  margin-bottom: 30px;
+  @include adaptiv-font(16, 14);
   font-weight: 300;
 }
 
 .product__availability {
   margin-left: 20px;
-  margin-bottom: 30px;
 }
 
 .cart__availability {}
 
-.product__purchase {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+
 
 .product__price {
   @include adaptiv-font(28, 18);
@@ -112,7 +153,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(224, 224, 224);
+  border: 1px solid #c0c0c0;
+  background-color: $backgroundColor;
   width: 100px;
   font-weight: 500;
   border-radius: 5px;
@@ -124,22 +166,118 @@
   text-align: center;
   width: 100%;
   cursor: pointer;
-  padding: 10px 0px;
+  padding: 7px 0px;
   @include adaptiv-font(18, 16);
 }
 
 .product__quantity-number {
   text-align: center;
   width: 100%;
-  padding: 10px 0px;
+  padding: 7px 0px;
 }
 
 .product__quantity-plus {
   text-align: center;
   width: 100%;
   cursor: pointer;
-  padding: 10px 0px;
+  padding: 7px 0px;
   @include adaptiv-font(18, 16);
 }
 
-.product__btn {}
+.product__btn {
+  width: 200px;
+}
+
+
+
+
+
+
+
+.product__tabs {}
+
+.product__tabs-list {
+  border-bottom: 1px solid #dddddd;
+  display: flex;
+}
+
+.product__tabs-list-item {
+  text-align: center;
+  max-width: 180px;
+  width: 50%;
+  @include adaptiv-font(16, 14);
+  padding: 15px 0;
+  border: 1px solid #dddddd;
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid #dddddd;
+  background-color: $backgroundColor;
+  transition: .3s;
+  cursor: pointer;
+  font-weight: 300;
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .3s;
+    border-top: 1px solid #007AFF;
+
+  }
+
+  &.active {
+    position: relative;
+    transition: .3s;
+    border-top: 1px solid #007AFF;
+    background-color: #ffffff;
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: #ffffff;
+      left: 0;
+      bottom: -2px;
+    }
+
+  }
+}
+
+.product__tabs-content {}
+
+.product__tabs-content-item {
+  display: none;
+  padding-top: 30px;
+
+  &.active {
+    display: block;
+  }
+}
+
+
+
+
+
+
+
+
+
+.product__tabs-content-item-wrapper {
+  margin-bottom: 30px;
+}
+
+.product__tabs-content-title {
+  @include adaptiv-font(16, 15);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.product__tabs-content-list {
+  margin-bottom: 10px;
+}
+
+.product__tabs-content-list-item {
+  list-style: circle;
+  margin-left: 30px;
+}
+
+.product__tabs-content-text {}

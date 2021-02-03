@@ -1,6 +1,6 @@
-const tabsInit = () => {
-  let tabItem = document.querySelectorAll('.tabs__header-item');
-  let contentItem = document.querySelectorAll('.tabs__content-item');
+const tabsInit = (a, b) => {
+  let tabItem = document.querySelectorAll(a);
+  let contentItem = document.querySelectorAll(b);
 
   tabItem.forEach((elem, i) => {
     elem.addEventListener('click', () => {
