@@ -8,93 +8,115 @@
 
 window.addEventListener("DOMContentLoaded", () => {
   'use strict';
+  try {
+    tabsInit('.tabs__header-item', '.tabs__content-item');
+    tabsInit('.product__tabs-list-item', '.product__tabs-content-item');
 
-  quantity('product__quantity', 'product__quantity-number');
-  openSizeTable('.product__size-table', '.modal__content');
-  tabsInit('.tabs__header-item', '.tabs__content-item');
-  tabsInit('.product__tabs-list-item', '.product__tabs-content-item');
-
-  const heroSlider = new Swiper('.hero__container', {
-    loop: true,
-
-    pagination: {
-      el: '.swiper-pagination',
-    },
-
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-
-  });
-
-  const blogSlider = new Swiper('.blog-container', {
-    loop: true,
-    slidesPerView: 4,
-    spaceBetween: 10,
-
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-
-  });
-
-  const revisedSlider = new Swiper('.revised-container', {
-    slidesPerView: 1.1,
-
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-
-    breakpoints: {
-      450: {
-        slidesPerView: 1.5,
+    const heroSlider = new Swiper('.hero__container', {
+      loop: true,
+  
+      pagination: {
+        el: '.swiper-pagination',
       },
-      600: {
-        slidesPerView: 2,
+  
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
-      768: {
-        slidesPerView: 2.5,
+  
+    });
+  
+    const blogSlider = new Swiper('.blog-container', {
+      loop: true,
+      slidesPerView: 1.2,
+      spaceBetween: 10,
+  
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
-      900: {
-        slidesPerView: 3,
-        spaceBetween: 50,
+
+      breakpoints: {
+        450: {
+          slidesPerView: 1.5,
+        },
+        600: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 2.5,
+        },
+        900: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 3.5,
+        },
+        1200: {
+          slidesPerView: 4,
+        },
+      }
+  
+    });
+  
+    const revisedSlider = new Swiper('.revised-container', {
+      slidesPerView: 1.1,
+  
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
-      1024: {
-        slidesPerView: 3.5,
-        spaceBetween: 50,
+  
+      breakpoints: {
+        450: {
+          slidesPerView: 1.5,
+        },
+        600: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 2.5,
+        },
+        900: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 3.5,
+        },
+        1200: {
+          slidesPerView: 4,
+        },
+      }
+  
+    });
+  
+    const productDownSlider = new Swiper('.product__down-slider-container', {
+      direction: 'vertical',
+      slidesPerView: 5,
+      spaceBetween: 0,
+      freeMode: true,
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+    });
+  
+    const productTopSlider = new Swiper('.product__top-slider-container', {
+      slidesPerView: 1,
+  
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
-      1200: {
-        slidesPerView: 4,
-        spaceBetween: 50,
-      },
-    }
+  
+      thumbs: {
+        swiper: productDownSlider
+      }
+  
+    });
 
-  });
-
-  const productDownSlider = new Swiper('.product__down-slider-container', {
-    direction: 'vertical',
-    slidesPerView: 5,
-    spaceBetween: 0,
-    freeMode: true,
-    watchSlidesVisibility: true,
-    watchSlidesProgress: true,
-  });
-
-  const productTopSlider = new Swiper('.product__top-slider-container', {
-    slidesPerView: 1,
-
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-
-    thumbs: {
-      swiper: productDownSlider
-    }
-
-  });
-
+    openSizeTable('.product__size-table', '.modal__content');
+    quantity('product__quantity', 'product__quantity-number');
+    
+  } catch (error) {
+    
+  }
 });
