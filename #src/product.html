@@ -59,12 +59,17 @@
             </div>
 
             <div class="product__item">
+              <h4 class="product__item-title"></h4>
+              <button class="product__size-table">Таблиця розмірів</button>
+            </div>
+
+            <div class="product__item">
               <h4 class="product__item-title">Розмір комплекту:</h4>
               <select class="product__select" name="select" id="select">
-                <option value="євро">євро</option>
-                <option value="сімейний">сімейний</option>
-                <option value="півтора">півтора</option>
-                <option value="півтора">двоспальний</option>
+                <option value="Півтораспальний">Півтораспальний</option>
+                <option value="Двоспальний">Двоспальний</option>
+                <option value="Євро">Євро</option>
+                <option value="Сімейний">Сімейний</option>
               </select>
             </div>
 
@@ -87,7 +92,7 @@
 
             <div class="product__item">
               <h4 class="product__item-title">Ціна:</h4>
-              <div class="product__price">500 <span>грн / комплет</span></div>
+              <div class="product__price">500 <span>грн / комплект</span></div>
             </div>
 
 
@@ -106,7 +111,7 @@
                 <tr class="table__row">
                   <td class="table__col">
                     Країна виробник</td>
-                  <td class="table__col">	Пакистан</td>
+                  <td class="table__col"> Пакистан</td>
                 </tr>
                 <tr class="table__row">
                   <td class="table__col">Тканина</td>
@@ -114,15 +119,11 @@
                 </tr>
                 <tr class="table__row">
                   <td class="table__col">Склад</td>
-                  <td class="table__col">	80% бавовна</td>
+                  <td class="table__col"> 80% бавовна</td>
                 </tr>
                 <tr class="table__row">
                   <td class="table__col">Щільність, г/м²</td>
                   <td class="table__col">135</td>
-                </tr>
-                <tr class="table__row">
-                  <td class="table__col">Ширина, см</td>
-                  <td class="table__col">	220</td>
                 </tr>
                 <tr class="table__row">
                   <td class="table__col">Колір</td>
@@ -246,6 +247,9 @@
   </main>
 
   @@include('template/_footer.html')
+  @@include('template/_modal.html')
+
+
 
   <script src="./js/script.min.js"></script>
 

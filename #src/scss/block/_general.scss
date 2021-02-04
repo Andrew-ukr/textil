@@ -6,7 +6,6 @@ $maxWidth: 1920;
 	font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
 }
 
-
 $textColor: #343434;
 $hoverColor: #5b5d84;
 $backgroundColor: #f3f3f3;
@@ -22,7 +21,7 @@ body {
 	@include adaptiv-font(14, 14);
 	color: $textColor;
 
-	&.lock {
+	&.body--lock {
 		overflow: hidden;
 	}
 }

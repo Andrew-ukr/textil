@@ -115,6 +115,23 @@
   margin-bottom: 20px;
 }
 
+.product__size-table {
+  background: transparent;
+  color: #007AFF;
+}
+
+select {
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .3s;
+    border: 1px solid #007AFF;
+    box-shadow: 0 0 5px #007AFF;
+  }
+}
 
 .product__select {
   border-radius: 5px;
@@ -147,6 +164,10 @@
 
 .product__price {
   @include adaptiv-font(28, 18);
+
+  span {
+    @include adaptiv-font(14, 14);
+  }
 }
 
 .product__quantity {
@@ -160,6 +181,16 @@
   border-radius: 5px;
   transition: .3s;
   text-transform: uppercase;
+  transition: .3s;
+  overflow: hidden;
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .3s;
+    border: 1px solid #007AFF;
+    box-shadow: 0 0 5px #007AFF;
+  }
 }
 
 .product__quantity-minus {
@@ -168,6 +199,14 @@
   cursor: pointer;
   padding: 7px 0px;
   @include adaptiv-font(18, 16);
+  transition: .3s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .3s;
+    background-color: darken($color:$backgroundColor, $amount: 10%);
+  }
 }
 
 .product__quantity-number {
@@ -182,10 +221,23 @@
   cursor: pointer;
   padding: 7px 0px;
   @include adaptiv-font(18, 16);
+  transition: .3s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .3s;
+    background-color: darken($color:$backgroundColor, $amount: 10%);
+  }
 }
 
 .product__btn {
-  width: 200px;
+  width: 100%;
+
+  @media (min-width: 600px) {
+    width: 200px;
+
+  }
 }
 
 
@@ -299,13 +351,11 @@
 
 .table__row {
   border: 1px solid #dddddd;
-
 }
-
 
 .table__col {
   border: 1px solid #dddddd;
-  width: 200px;
+  width: 250px;
   line-height: 1.2;
   padding: 5px;
 }
