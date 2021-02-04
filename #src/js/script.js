@@ -118,8 +118,6 @@ window.addEventListener("DOMContentLoaded", () => {
     quantity('product__quantity', 'product__quantity-number'); // при натисканні кнопок + / - змінюється кількість продукці\
     selectProdPrice(); // при події селектора вибору розміру комплекту відбувається зміна поточної ціни + змінюється назва заголовку товару 
 
-
-
   } catch (error) {
     
   }

@@ -50,6 +50,16 @@
   height: 35px;
   width: 270px;
   padding: 0 10px;
+  border: 1px solid transparent;
+  transition: .3s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .3s;
+    border: 1px solid $greenColor;
+    box-shadow: 0 0 5px #000000;
+  }
 
   @media (min-width: 768px) {
     width: 400px;

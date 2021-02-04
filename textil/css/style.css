@@ -379,7 +379,7 @@ section {
   background-color: #2c3e50;
   padding-top: 50px;
   padding-bottom: 50px;
-  font-size: calc(12px + 2 * ((100vw - 320px) / 1600));
+  font-size: calc(14px + 0 * ((100vw - 320px) / 1600));
 }
 
 .footer .logo {
@@ -882,6 +882,21 @@ section {
   height: 35px;
   width: 270px;
   padding: 0 10px;
+  border: 1px solid transparent;
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
+}
+
+.cta__input:hover,
+.cta__input:active,
+.cta__input:focus {
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
+  border: 1px solid #6ec342;
+  -webkit-box-shadow: 0 0 5px #000000;
+          box-shadow: 0 0 5px #000000;
 }
 
 .cta__btn {
@@ -906,10 +921,6 @@ section {
 
 .cta__btn img {
   width: 50%;
-}
-
-.blog {
-  padding-top: 0px;
 }
 
 .blog__item:hover,
@@ -1093,6 +1104,7 @@ section {
 
 .product__title {
   margin-bottom: 50px;
+  line-height: 1.2;
 }
 
 .product__item {
@@ -1108,6 +1120,7 @@ section {
 .product__size-table {
   background: transparent;
   color: #007AFF;
+  font-size: calc(15px + 1 * ((100vw - 320px) / 1600));
 }
 
 select {
@@ -1529,6 +1542,7 @@ select:focus {
   .tabs__content-item {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    overflow: unset;
   }
 
   .tabs__content-item .card {

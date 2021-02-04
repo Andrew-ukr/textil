@@ -105,6 +105,7 @@
 
 .product__title {
   margin-bottom: 50px;
+  line-height: 1.2;
 }
 
 ._product-title {}
@@ -118,6 +119,7 @@
 .product__size-table {
   background: transparent;
   color: #007AFF;
+  @include adaptiv-font(16, 15);
 }
 
 select {
