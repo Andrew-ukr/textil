@@ -25,7 +25,10 @@
   background-color: transparent;
 }
 
-.header__top-item-tel {}
+.header__top-item-tel {
+  @include adaptiv-font(14, 12);
+
+}
 
 .header__top-item-img-block {}
 

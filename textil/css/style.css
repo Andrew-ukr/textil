@@ -332,6 +332,10 @@ section {
   background-color: transparent;
 }
 
+.header__top-item-tel {
+  font-size: calc(12px + 2 * ((100vw - 320px) / 1600));
+}
+
 .hero__slide {
   position: relative;
   display: block;
@@ -740,8 +744,11 @@ section {
 
 .tabs__content-item {
   display: none;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  overflow: auto;
+}
+
+.tabs__content-item::-webkit-scrollbar {
+  display: none;
 }
 
 .tabs__content-item.active {
@@ -751,7 +758,8 @@ section {
 }
 
 .tabs__content-item .card {
-  width: 100%;
+  min-width: 250px;
+  width: 250px;
 }
 
 .mobile-block.mobile-block--active {
@@ -1391,7 +1399,7 @@ select:focus {
 
 .modal__size-table-col {
   border: 1px solid #dddddd;
-  padding: 5px;
+  padding: 8px 5px;
   text-align: center;
   font-size: calc(12px + 2 * ((100vw - 320px) / 1600));
 }
@@ -1401,12 +1409,6 @@ select:focus {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-  }
-}
-
-@media (min-width: 450px) {
-  .tabs__content-item .card {
-    width: 50%;
   }
 }
 
@@ -1493,12 +1495,6 @@ select:focus {
   }
 }
 
-@media (min-width: 850px) {
-  .tabs__content-item .card {
-    width: 33.33%;
-  }
-}
-
 @media (min-width: 992px) {
   .hero__slide {
     height: 510px;
@@ -1528,6 +1524,15 @@ select:focus {
   .card:active .card__inner,
   .card:focus .card__inner {
     z-index: 5;
+  }
+
+  .tabs__content-item {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .tabs__content-item .card {
+    width: 33.33%;
   }
 }
 

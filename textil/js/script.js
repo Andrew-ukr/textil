@@ -155,6 +155,16 @@ const quantity = (a, b) => {
   });
 
 };
+const selectProdPrice = () => {
+  const prodSelector = document.querySelector('select.product__select');
+  const prodSelectName = document.querySelectorAll('.product__select-name');
+
+  prodSelector.addEventListener('input', () => {
+    document.querySelector('.product__price').innerHTML = `${prodSelector.value} <span>грн / комплект</span>`;
+    document.querySelector('.product__title-size').innerText = `${prodSelectName[prodSelector.selectedIndex].innerText}`;
+  });
+
+}
 
 window.addEventListener("DOMContentLoaded", () => {
   'use strict';
@@ -263,9 +273,12 @@ window.addEventListener("DOMContentLoaded", () => {
   
     });
 
-    openSizeTable('.product__size-table', '.modal__content');
-    quantity('product__quantity', 'product__quantity-number');
-    
+    openSizeTable('.product__size-table', '.modal__content'); //відкривається модальне вікно з таблицею розмірів
+    quantity('product__quantity', 'product__quantity-number'); // при натисканні кнопок + / - змінюється кількість продукці\
+    selectProdPrice(); // при події селектора вибору розміру комплекту відбувається зміна поточної ціни + змінюється назва заголовку товару 
+
+
+
   } catch (error) {
     
   }
