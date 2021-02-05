@@ -16,7 +16,7 @@
         box-shadow: 0 0 30px #dadada;
       }
   
-      .cart__btn-wrapper {
+      .card__btn-wrapper {
         display: block;
       }
   
@@ -77,7 +77,7 @@
   background-color: #ffffff;
 }
 
-.cart__btn-wrapper {
+.card__btn-wrapper {
   display: none;
   text-align: center;
   margin-top: 20px;
@@ -106,7 +106,7 @@
   width: 100%;
 }
 
-.cart__title {
+.card__title {
   display: block;
   margin-bottom: 15px;
   text-align: center;
@@ -114,12 +114,12 @@
 
 ._card-title {}
 
-.cart__price {
+.card__price {
   font-weight: 700;
   margin-bottom: 15px;
 }
 
-.cart__availability {
+.card__availability {
   position: relative;
   color: #969696;
   text-decoration: line-through;

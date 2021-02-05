@@ -165,6 +165,30 @@ const selectProdPrice = () => {
   });
 
 }
+const openCart = () => {
+  let cartBtn = document.querySelector('.header__top-btn');
+  let closeCartBtn = document.querySelector('.cart__close');
+  let cartModal = document.querySelector('.cart');
+
+  cartBtn.addEventListener('click', () => {
+    cartModal.classList.add('active');
+    cartModal.firstElementChild.classList.toggle('active');
+  });
+
+  closeCartBtn.addEventListener('click', () => {
+    cartModal.classList.toggle('active');
+    cartModal.firstElementChild.classList.toggle('active');
+
+  });
+
+  cartModal.addEventListener('click', (e) => {
+    if (e.target && e.target.classList.contains('cart')) {
+      cartModal.classList.remove('active');
+      document.body.classList.remove('body--lock');
+      document.body.style.paddingRight = ``;
+    }
+  });
+};
 
 window.addEventListener("DOMContentLoaded", () => {
   'use strict';
@@ -273,10 +297,15 @@ window.addEventListener("DOMContentLoaded", () => {
   
     });
 
+    openCart();
+  } catch (error) {
+    
+  }
+
+  try {
     openSizeTable('.product__size-table', '.modal__content'); //відкривається модальне вікно з таблицею розмірів
     quantity('product__quantity', 'product__quantity-number'); // при натисканні кнопок + / - змінюється кількість продукці\
     selectProdPrice(); // при події селектора вибору розміру комплекту відбувається зміна поточної ціни + змінюється назва заголовку товару 
-
   } catch (error) {
     
   }

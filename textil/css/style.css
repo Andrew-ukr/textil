@@ -600,7 +600,7 @@ section {
   background-color: #ffffff;
 }
 
-.cart__btn-wrapper {
+.card__btn-wrapper {
   display: none;
   text-align: center;
   margin-top: 20px;
@@ -637,33 +637,33 @@ section {
   width: 100%;
 }
 
-.cart__title {
+.card__title {
   display: block;
   margin-bottom: 15px;
   text-align: center;
 }
 
-.cart__price {
+.card__price {
   font-weight: 700;
   margin-bottom: 15px;
 }
 
-.cart__availability {
+.card__availability {
   position: relative;
   color: #969696;
   text-decoration: line-through;
 }
 
-.cart__availability.avalible {
+.card__availability.avalible {
   color: #6ec342;
   text-decoration: unset;
 }
 
-.cart__availability.avalible::after {
+.card__availability.avalible::after {
   background-color: #6ec342;
 }
 
-.cart__availability::after {
+.card__availability::after {
   position: absolute;
   content: '';
   width: 10px;
@@ -1430,8 +1430,28 @@ select:focus {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0);
+  z-index: -1;
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
+}
+
+.cart.active {
   z-index: 4;
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
+}
+
+.cart.active .cart__block {
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
 }
 
 .cart__block {
@@ -1452,15 +1472,6 @@ select:focus {
   -webkit-transition: .3s;
   -o-transition: .3s;
   transition: .3s;
-}
-
-.cart__block.active {
-  -webkit-transition: .3s;
-  -o-transition: .3s;
-  transition: .3s;
-  -webkit-transform: translateX(0);
-      -ms-transform: translateX(0);
-          transform: translateX(0);
 }
 
 .cart__close {
@@ -1642,9 +1653,9 @@ select:focus {
             box-shadow: 0 0 30px #dadada;
   }
 
-  .card:hover .cart__btn-wrapper,
-  .card:active .cart__btn-wrapper,
-  .card:focus .cart__btn-wrapper {
+  .card:hover .card__btn-wrapper,
+  .card:active .card__btn-wrapper,
+  .card:focus .card__btn-wrapper {
     display: block;
   }
 
