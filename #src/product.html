@@ -18,7 +18,7 @@
   <main>
     <section class="product">
       <div class="container">
-        <div class="product__wrapper">
+        <div class="product__wrapper" data-cart="productItem">
           <div class="product__block">
             <div class="product__top-slider-container swiper-container">
               <div class="product__top-slider-wrapper swiper-wrapper">
@@ -36,7 +36,7 @@
 
             <div class="product__down-slider-container swiper-container">
               <div class="product__down-slider-wrapper swiper-wrapper">
-                <div class="product__down-swiper swiper-slide"><img src="img/product/prod01/1-small.jpg" alt=""></div>
+                <div class="product__down-swiper swiper-slide"><img src="img/product/prod01/1-small.jpg" alt="" data-cart="img"></div>
                 <div class="product__down-swiper swiper-slide"><img src="img/product/prod01/2-small.jpg" alt=""></div>
                 <div class="product__down-swiper swiper-slide"><img src="img/product/prod01/3-small.jpg" alt=""></div>
                 <div class="product__down-swiper swiper-slide"><img src="img/product/prod01/4-small.jpg" alt=""></div>
@@ -50,8 +50,8 @@
           </div>
 
           <div class="product__block">
-            <div class="product__title _product-title">
-              КОМПЛЕКТ ПОСТІЛЬНОЇ БІЛИЗНИ З САТИНУ СЬЮЗІ (<span class="product__title-size">Півтораспальний</span>)
+            <div class="product__title _product-title" data-cart="productTitle">
+              КОМПЛЕКТ ПОСТІЛЬНОЇ БІЛИЗНИ З САТИНУ СЬЮЗІ (<span class="product__title-size"  data-cart="productSize">Півтораспальний</span>)
             </div>
             <div class="product__item">
               <h4 class="product__item-title">Наявність:</h4>
@@ -66,18 +66,18 @@
             <div class="product__item">
               <h4 class="product__item-title">Розмір комплекту:</h4>
               <select class="product__select" name="select" id="select">
-                <option class="product__select-name" class="product__select-name" value="450">Півтораспальний</option>
-                <option class="product__select-name" value="550">Двоспальний</option>
-                <option class="product__select-name" value="600">Євро</option>
-                <option class="product__select-name" value="650">Сімейний</option>
+                <option class="product__select-name" class="product__select-name" value="470">Півтораспальний</option>
+                <option class="product__select-name" class="product__select-name" value="550">Двоспальний</option>
+                <option class="product__select-name" class="product__select-name" value="600">Євро</option>
+                <option class="product__select-name" class="product__select-name" value="650">Сімейний</option>
               </select>
             </div>
 
             <div class="product__item">
               <h4 class="product__item-title">Розмір наволочки:</h4>
-              <select class="product__select" name="select" id="select">
-                <option value="євро">70 * 70</option>
-                <option value="євро">50 * 70</option>
+              <select class="product__select" name="select" id="select" data-cart="productSizeNavolochka">
+                <option value="70*70">70 * 70</option>
+                <option value="50*70">50 * 70</option>
               </select>
             </div>
 
@@ -85,18 +85,18 @@
               <h4 class="product__item-title">Кількість:</h4>
               <div class="product__quantity">
                 <div class="product__quantity-minus">-</div>
-                <div class="product__quantity-number">1</div>
+                <div class="product__quantity-number" data-cart="productNumber">1</div>
                 <div class="product__quantity-plus">+</div>
               </div>
             </div>
 
             <div class="product__item">
               <h4 class="product__item-title">Ціна:</h4>
-              <div class="product__price">450 <span>грн / комплект</span></div>
+              <div class="product__price" data-cart="productPrice">470<span> грн / комплект</span></div>
             </div>
 
 
-            <button type="submit" class="product__btn _btn">до кошика</button>
+            <button type="submit" class="product__btn _btn" data-cart="addBtn">до кошика</button>
 
           </div>
         </div>

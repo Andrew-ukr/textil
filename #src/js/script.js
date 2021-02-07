@@ -7,9 +7,11 @@
 @@include('module/_quantity.js')
 @@include('module/_selectProductPrice.js')
 @@include('module/_openCart.js')
+@@include('module/_cart.js')
 
 window.addEventListener("DOMContentLoaded", () => {
   'use strict';
+  
   try {
     tabsInit('.tabs__header-item', '.tabs__content-item');
     tabsInit('.product__tabs-list-item', '.product__tabs-content-item');
@@ -115,7 +117,8 @@ window.addEventListener("DOMContentLoaded", () => {
   
     });
 
-    openCart();
+    openCart(); // при натисканні відкривається вікно корзини
+    cart();
   } catch (error) {
     
   }
