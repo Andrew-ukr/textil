@@ -7,6 +7,9 @@ const cart = () => {
   const addBtn = document.querySelector('[data-cart="addBtn"]');
   const productItem = document.querySelectorAll('[data-cart="productItem"]');
   const cartContent = document.querySelector('.cart__content');
+  const cartItems = document.querySelector('.cart__total-row-span-number');
+  const cartItemsSum = document.querySelector('.cart__total-row-span-sum');
+  const topTotalSum = document.querySelector('[data-cart="topSum"]');
 
   function addItem(elem) {
     const item = {};
@@ -24,8 +27,10 @@ const cart = () => {
 
   function renderCartItems() {
     let cartItemsList = '';
+    let totalSum = 0;
+    let totalquantity = 0;
 
-    if(cart.length > 0) {
+    if (cart.length > 0) {
       cart.forEach(elem => {
         cartItemsList += `
           <div class="cart__content-item">
@@ -48,19 +53,29 @@ const cart = () => {
             <button class="cart__content-btn _btn">видалити</button>
           </div>
         `;
+
+        totalSum += parseInt(elem.productPrice.replace(/\D/, '')) * elem.productNumber;
+        totalquantity += +elem.productNumber;
+
       });
-  
+
       cartContent.innerHTML = cartItemsList;
+      cartItems.innerHTML = `${totalquantity} шт.`;
+      cartItemsSum.innerHTML = `${(totalSum).toFixed(2)} грн.`;
+      topTotalSum.innerHTML = `${totalSum.toFixed(2)} грн.`;
+
     } else {
       cartContent.innerHTML = `
         <span class="cart__content-empty">
           Кошик порожній
         </span>
       `;
+      cartItems.innerHTML = `0 шт.`;
+      cartItemsSum.innerHTML = `0.00 грн.`;
+      topTotalSum.innerHTML = ``;
     }
 
   }
-
 
   function addBtnAction() {
     productItem.forEach(elem => {
@@ -68,7 +83,6 @@ const cart = () => {
         if (e.target && e.target.dataset.cart === 'addBtn') {
           addItem(elem);
           renderCartItems();
-
 
         }
       });

@@ -327,9 +327,20 @@ section {
 }
 
 .header__top-btn {
+  position: relative;
   width: 30px;
   height: 30px;
   background-color: transparent;
+}
+
+.header__top-btn span {
+  position: absolute;
+  white-space: nowrap;
+  left: -75px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .header__top-item-tel {

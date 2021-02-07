@@ -20,9 +20,18 @@
 }
 
 .header__top-btn {
+  position: relative;
   width: 30px;
   height: 30px;
   background-color: transparent;
+
+  span{
+    position: absolute;
+    white-space: nowrap;
+    left: -75px;
+    top: 50%;
+    transform: translateY(-50%)
+  }
 }
 
 .header__top-item-tel {
