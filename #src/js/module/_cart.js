@@ -19,12 +19,19 @@ const cart = () => {
     item.productSize = elem.querySelector('[data-cart="productSize"]').innerText;
     item.productSizeNavolochka = elem.querySelector('[data-cart="productSizeNavolochka"]').value;
     item.productNumber = elem.querySelector('[data-cart="productNumber"]').innerText;
-    item.productPrice = elem.querySelector('[data-cart="productPrice"]').innerText;
+    item.productPrice = (elem.querySelector('[data-cart="productPrice"]').innerText).replace( /\D/g , '');
     item.img = elem.querySelector('[data-cart="img"]').getAttribute('src');
 
     cart.unshift(item);
     localStorage.setItem('cartItems', (JSON.stringify(cart)));
     console.log('addItem');
+  }
+  function checkImgPath(elem) {
+    let newPath = elem;
+    if (newPath.includes('mid')) {
+      newPath = newPath.replace('-mid','-small');
+    } 
+    return newPath;
   }
 
   function renderCartItems() {
@@ -39,11 +46,11 @@ const cart = () => {
             <div class="cart__content-wrapper">
               <div class="cart__content-block">
                 <div class="cart__content-img">
-                  <img src="${elem.img}" alt="">
+                  <img src="${checkImgPath(elem.img)}" alt="">
                 </div>
               </div>
               <div class="cart__content-block">
-                <div class="cart__content-price">${elem.productPrice}</div>
+                <div class="cart__content-price">${(elem.productPrice)} грн / комплект</div>
                 <div class="cart__content-number product__quantity">
                   <div class="product__quantity-minus">-</div>
                   <div class="product__quantity-number" data-cart="productNumber">${elem.productNumber}</div>

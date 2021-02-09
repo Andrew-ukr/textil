@@ -8,6 +8,7 @@
   margin-bottom: 20px;
 
   @media (min-width: 992px) {
+
     &:hover,
     &:active,
     &:focus {
@@ -15,15 +16,15 @@
         transition: .3s;
         box-shadow: 0 0 30px #dadada;
       }
-  
+
       .card__btn-wrapper {
         display: block;
       }
-  
+
       .card__inner {
         z-index: 5;
       }
-  
+
     }
   }
 
@@ -111,6 +112,7 @@
   margin-bottom: 15px;
   text-align: center;
   line-height: 1.2;
+  height: 34px;
 }
 
 ._card-title {}
@@ -145,4 +147,8 @@
     top: 50%;
     transform: translateY(-50%);
   }
+}
+
+.card__hidden {
+  display: none;
 }
