@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   width: 280px;
-  height: 363px;
+  height: 384px;
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
@@ -110,6 +110,7 @@
   display: block;
   margin-bottom: 15px;
   text-align: center;
+  line-height: 1.2;
 }
 
 ._card-title {}

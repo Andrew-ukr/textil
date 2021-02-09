@@ -1,0 +1,73 @@
+.main {}
+
+.container {}
+
+.main__wrapper {
+  display: flex;
+}
+
+.main__block {
+  &:nth-child(1) {
+    flex: 0 0 250px;
+  }
+
+  &:nth-child(2) {
+    flex: 0 0 auto;
+  }
+}
+
+.main__item {
+  line-height: 1.5;
+
+  &+& {
+    margin-top: 30px;
+  }
+}
+
+.main__subtitle {
+  color: $hoverColor;
+  @include adaptiv-font(18, 16);
+  margin-bottom: 20px;
+  background-color: $backgroundColor;
+  padding: 5px;
+
+}
+
+.main__filter-list {}
+
+.main__filter-item {
+  position: relative;
+  width: fit-content;
+  transition: .3s;
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: transparent;
+    bottom: -0px;
+    left: 0;
+    transition: .3s;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .3s;
+    color: $hoverColor;
+
+    &::after {
+      background-color: $hoverColor;
+      transition: .3s;
+    }
+  }
+}
+
+.main__checkbox {
+  cursor: pointer;
+  margin-right: 10px;
+}
+.main__label {
+  cursor: pointer;
+}

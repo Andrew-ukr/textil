@@ -29,6 +29,7 @@ const cart = () => {
 
   function renderCartItems() {
     let cartItemsList = '';
+    const cartImg = document.querySelector('[data-cart="cartImg"]')
 
     if (cart.length > 0) {
       cart.forEach(elem => {
@@ -58,6 +59,8 @@ const cart = () => {
       cartContent.innerHTML = cartItemsList;
       showTotalSum();
       delСartItem();
+      cartImg.setAttribute('src', 'img/icons/cart-blue.svg');
+      cartImg.previousElementSibling.setAttribute('srcset', 'img/icons/cart-blue.svg');
 
     } else {
       cartContent.innerHTML = `
@@ -68,6 +71,8 @@ const cart = () => {
       cartItems.innerHTML = `0 шт.`;
       cartItemsSum.innerHTML = `0.00 грн.`;
       topTotalSum.innerHTML = ``;
+      cartImg.setAttribute('src', 'img/icons/cart.svg');
+      cartImg.previousElementSibling.setAttribute('srcset', 'img/icons/cart.svg');
     }
     console.log('rend');
 
@@ -103,7 +108,7 @@ const cart = () => {
     });
   }
 
-  function changeCartNumber () {
+  function changeCartNumber() {
     let catrItems = document.querySelectorAll(`.cart__content-item`);
 
     catrItems.forEach((elem, i) => {

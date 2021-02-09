@@ -8,6 +8,7 @@
 @@include('module/_selectProductPrice.js')
 @@include('module/_openCart.js')
 @@include('module/_cart.js')
+@@include('module/_range-slider.js')
 
 window.addEventListener("DOMContentLoaded", () => {
   'use strict';
