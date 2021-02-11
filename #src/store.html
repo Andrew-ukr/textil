@@ -46,10 +46,10 @@
               <div class="main__item">
                 <div class="main__subtitle">Вид тканини</div>
                 <ul class="main__filter-list">
-                  <li class="main__filter-item" ><input class="main__checkbox" type="checkbox" name="byaz" id="1"><label
-                      class="main__label" for="1">Бязь</label></li>
-                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="satin" id="2"><label
-                      class="main__label" for="2">Сатин</label></li>
+                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="byaz" id="1"
+                      data-filter="cloth"><label class="main__label" for="1">Бязь</label></li>
+                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="satin" id="2"
+                      data-filter="cloth"><label class="main__label" for="2">Сатин</label></li>
                 </ul>
               </div>
 
@@ -98,7 +98,7 @@
   @@include('template/_modal.html')
   @@include('template/_cart.html')
 
-  <script src="./js/script.min.js"></script>
+  <script src="./js/script.js"></script>
 
 </body>
 

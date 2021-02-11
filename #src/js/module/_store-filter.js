@@ -1,8 +1,12 @@
 const storeFilter = () => {
-  let primaryProductArray = [];
+  const primaryProductArray = [];
   let productItem = document.querySelectorAll('[data-cart="productItem"]');
-  let filterBtn = document.querySelectorAll('.main__checkbox');
-  let filterItems = [];
+  let filterBtnBlock = document.querySelector('.main__block-inner');
+
+  let filterItemsPrice = [];
+  let filterItemsCloth = [];
+  let filterItemsSize = [];
+  let filterItemsAvalible = [];
 
   productItem.forEach(elem => {
     let item = {};
@@ -20,20 +24,86 @@ const storeFilter = () => {
     primaryProductArray.push(item);
   });
 
-  console.log(primaryProductArray);
 
-  filterBtn.forEach(elem => {
-    elem.addEventListener('click', () => {
-      if (elem.checked) {
-        filterItems.push((elem.nextElementSibling.innerText).toLowerCase());
-      } else {
-
+  filterBtnBlock.addEventListener('click', (e) => {
+    if (e.target.checked) {
+      switch (e.target && e.target.dataset.filter) {
+        case 'cloth':
+          console.log(1);
+  
+  
+          break;
+  
       }
-      console.log(filterItems);
+    } else {
+      
+    }
+    
 
-    });
+
   });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function bildNewCardList(array) {
+    let cardListBlock = document.querySelector('.main__products');
+    let cardList = '';
+
+    array.forEach(elem => {
+      cardList += `
+      <div class="${elem.cartClass}" data-cart="productItem">
+      <div class="card__inner">
+        <div class="card__img-block">
+          <a class="card__img-link" href="${elem.cartLink}">
+            <img class="card__img" src="${elem.imgPath}" alt="" data-cart="img">
+          </a>
+        </div>
+        <div class="card__content">
+          <a href="product.html" class="card__title _card-title" data-cart="productTitle">КОМПЛЕКТ ПОСТІЛЬНОЇ
+            БІЛИЗНИ, <span class="product__title-size"  data-cart="productСloth">${elem.cloth}</span> (<span class="product__title-size"  data-cart="productSize">${elem.size}</span>)</a>
+          <div class="card__price" data-cart="productPrice">${elem.price} <span>грн</span></div>
+          <div class="${elem.avalible}">В наявності</div>
+
+          <!-- hidden elements -->
+
+          <div class="card__hidden" data-cart="productNumber">1</div>
+          <select class="card__hidden" name="select" id="select" data-cart="productSizeNavolochka">
+            <option value="70*70" selected>70 * 70</option>
+            <option value="50*70">50 * 70</option>
+          </select>
+
+          <!-- hidden elements -->
+
+        </div>
+        <div class="card__btn-wrapper">
+          <button class="card__btn _btn" data-cart="addBtn">
+            До кошика
+          </button>
+        </div>
+      </div>
+    </div>
+      `;
+    });
+
+    cardListBlock.innerHTML = cardList;
+  }
 
 };
