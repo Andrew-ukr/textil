@@ -10,7 +10,7 @@
 
 .nav__list {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 
   @media (min-width: 405px) {
     justify-content: center;

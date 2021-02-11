@@ -9,6 +9,7 @@
 @@include('module/_openCart.js')
 @@include('module/_cart.js')
 @@include('module/_range-slider.js')
+@@include('module/_store-filter.js')
 
 window.addEventListener("DOMContentLoaded", () => {
   'use strict';
@@ -120,6 +121,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     openCart(); // при натисканні відкривається вікно корзини
     cart();
+    storeFilter();
+
   } catch (error) {
     
   }
@@ -128,6 +131,7 @@ window.addEventListener("DOMContentLoaded", () => {
     openSizeTable('.product__size-table', '.modal__content'); //відкривається модальне вікно з таблицею розмірів
     quantity('product__quantity', 'product__quantity-number'); // при натисканні кнопок + / - змінюється кількість продукці\
     selectProdPrice(); // при події селектора вибору розміру комплекту відбувається зміна поточної ціни + змінюється назва заголовку товару 
+
   } catch (error) {
     
   }
