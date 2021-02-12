@@ -122,6 +122,8 @@ window.addEventListener("DOMContentLoaded", () => {
     openCart(); // при натисканні відкривається вікно корзини
     cart();
     storeFilter();
+    rangeSlider();
+
 
   } catch (error) {
     

@@ -4,7 +4,7 @@ const cart = () => {
   if (localStorage.getItem('cartItems')) {
     cart = JSON.parse(localStorage.getItem('cartItems'));
   }
-  const productItem = document.querySelectorAll('[data-cart="productItem"]');
+  let productItem = document.querySelectorAll('[data-cart="productItem"]');
   const cartContent = document.querySelector('.cart__content');
   const cartItems = document.querySelector('.cart__total-row-span-number');
   const cartItemsSum = document.querySelector('.cart__total-row-span-sum');
@@ -24,8 +24,8 @@ const cart = () => {
 
     cart.unshift(item);
     localStorage.setItem('cartItems', (JSON.stringify(cart)));
-    console.log('addItem');
   }
+
   function checkImgPath(elem) {
     let newPath = elem;
     if (newPath.includes('mid')) {
@@ -81,8 +81,6 @@ const cart = () => {
       cartImg.setAttribute('src', 'img/icons/cart.svg');
       cartImg.previousElementSibling.setAttribute('srcset', 'img/icons/cart.svg');
     }
-    console.log('rend');
-
   }
 
   function showTotalSum() {
@@ -97,8 +95,6 @@ const cart = () => {
     cartItems.innerHTML = `${totalquantity} шт.`;
     cartItemsSum.innerHTML = `${(totalSum).toFixed(2)} грн.`;
     topTotalSum.innerHTML = `${totalSum.toFixed(2)} грн.`;
-    console.log('showTotalSum');
-
   }
 
   function addBtnAction() {
@@ -109,8 +105,6 @@ const cart = () => {
           renderCartItems();
           changeCartNumber();
         }
-        console.log('addBtnAction');
-
       });
     });
   }
@@ -132,8 +126,6 @@ const cart = () => {
         cart[i].productNumber = number.innerText;
         localStorage.setItem('cartItems', (JSON.stringify(cart)));
         showTotalSum();
-        console.log('changeCartNumber');
-
       });
     });
   }
@@ -147,7 +139,6 @@ const cart = () => {
           cart.splice(i, 1);
           localStorage.setItem('cartItems', (JSON.stringify(cart)));
           renderCartItems();
-          console.log('delСartItem');
         }
       });
     });

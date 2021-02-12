@@ -3,114 +3,53 @@ const storeFilter = () => {
   let productItem = document.querySelectorAll('[data-cart="productItem"]');
   let filterBtnBlock = document.querySelector('.main__block-inner');
   let newArray = primaryProductArray;
+  let rightRangeInput = document.querySelector('.store__aside-input-right');
+  let leftRangeInput = document.querySelector('.store__aside-input-left');
 
-  let filterItemsPrice = [];
   let filterItemsCloth = [];
   let filterItemsSize = [];
   let filterItemsAvalible = [];
 
-  productItem.forEach(elem => {
-    let item = {};
+  function initProdCardList() {
+    productItem.forEach(elem => {
+      let item = {};
 
-    item.cartClass = elem.className;
-    item.cartLink = elem.querySelector('.card__img-link').pathname;
-    item.imgPath = elem.querySelector('[data-cart="img"]').src;
-    item.title = elem.querySelector('[data-cart="productTitle"]').innerText;
-    item.cloth = (elem.querySelector('[data-cart="productСloth"]').innerText).toLowerCase();
-    item.size = elem.querySelector('[data-cart="productSize"]').innerText;
-    item.price = (elem.querySelector('[data-cart="productPrice"]').innerText).replace(/\D/g, '');
-    item.avalible = elem.querySelector('.card__availability').className;
-    item.filterArray = [(item.cloth.toLowerCase()), (item.size).toLowerCase(), (item.price.toLowerCase()), (item.avalible.toLowerCase())];
+      item.cartClass = elem.className;
+      item.cartLink = elem.querySelector('.card__img-link').pathname;
+      item.imgPath = elem.querySelector('[data-cart="img"]').src;
+      item.title = elem.querySelector('[data-cart="productTitle"]').innerText;
+      item.cloth = (elem.querySelector('[data-cart="productСloth"]').innerText).toLowerCase();
+      item.size = elem.querySelector('[data-cart="productSize"]').innerText;
+      item.price = (elem.querySelector('[data-cart="productPrice"]').innerText).replace(/\D/g, '');
+      item.avalible = elem.querySelector('.card__availability').className;
+      item.filterArray = [(item.cloth.toLowerCase()), (item.size).toLowerCase(), (item.price.toLowerCase()), (item.avalible.toLowerCase())];
 
-    primaryProductArray.push(item);
-  });
-
-
-  filterBtnBlock.addEventListener('click', (e) => {
-    let filterElementText = e.target.nextElementSibling;
-    if (e.target.checked) {
-      switch (e.target && e.target.dataset.filter) {
-        case 'cloth':
-          filterItemsCloth.push((filterElementText.innerText).toLowerCase());
-          break;
-
-        case 'size':
-          filterItemsSize.push((filterElementText.innerText).toLowerCase());
-          break;
-
-        case 'avalible':
-          filterItemsAvalible.push(("card__availability avalible").toLowerCase());
-          break;
-      }
-    } else {
-      switch (e.target && e.target.dataset.filter) {
-        case 'cloth':
-          delFilterItem(filterItemsCloth, filterElementText.innerText);
-          break;
-
-        case 'size':
-          delFilterItem(filterItemsSize, filterElementText.innerText);
-          break;
-
-        case 'avalible':
-          delFilterItem(filterItemsAvalible, "card__availability avalible");
-          break;
-      }
-    }
-
-    newArray = primaryProductArray;
-
-    buildFilteredArray(newArray, filterItemsCloth);
-    buildFilteredArray(newArray, filterItemsSize);
-    buildFilteredArray(newArray, filterItemsAvalible);
-
-    bildNewCardList(newArray);
-  });
-
-  initPriceRange();
-
-  function buildPriceFilteredArray(a, b) {
-    if (b.length > 0) {
-      newArray = a.filter(elem => {
-        let check = false;
-
-        b.forEach(item => {
-          elem.filterArray.forEach(filter => {
-            if (item === filter) {
-              check = true;
-            }
-          });
-        });
-
-        if (check) {
-          return true;
-        }
-      });
-    }
-    console.log(newArray);
+      primaryProductArray.push(item);
+    });
   }
 
+  function buildPriceFilteredArray(a, b, c) {
+    newArray = a.filter(elem => {
+      let check = false;
 
+      if (+b <= +elem.price & +elem.price <= +c) {
+        check = true;
+      }
 
-
-
-
-
-
-
-
-
-
-
-
-
+      if (check) {
+        return true;
+      }
+    });
+  }
 
   function initPriceRange() {
+    let inputPriceMaxValue = document.querySelector('.store__aside-input-right');
+    let inputPriceMinValue = document.querySelector('.store__aside-input-left');
     let minPrice = 9999999;
     let maxPrice = 0;
 
     primaryProductArray.forEach(elem => {
-      
+
       if (+elem.price > maxPrice) {
         maxPrice = elem.price;
       }
@@ -118,16 +57,15 @@ const storeFilter = () => {
       if (+elem.price < minPrice) {
         minPrice = elem.price;
       }
-
-
-
-
-
-
-      
     });
 
-    console.log(minPrice, maxPrice);
+    inputPriceMaxValue.max = maxPrice;
+    inputPriceMaxValue.min = minPrice;
+    inputPriceMinValue.max = maxPrice;
+    inputPriceMinValue.min = minPrice;
+
+    inputPriceMaxValue.value = maxPrice;
+    inputPriceMinValue.value = minPrice;
   }
 
   function buildFilteredArray(a, b) {
@@ -148,14 +86,12 @@ const storeFilter = () => {
         }
       });
     }
-    console.log(newArray);
   }
 
   function delFilterItem(a, b) {
     a.forEach((elem, i) => {
       if (elem === (b).toLowerCase()) {
         a.splice(i, 1);
-        console.log(a);
       }
     });
   } // a - curent array , b - comparative element
@@ -213,4 +149,61 @@ const storeFilter = () => {
     }
   }
 
+  initProdCardList();
+  initPriceRange();
+
+  filterBtnBlock.addEventListener('click', (e) => {
+    let filterElementText = e.target.nextElementSibling;
+    if (e.target && e.target.checked) {
+      switch (e.target && e.target.dataset.filter) {
+        case 'cloth':
+          filterItemsCloth.push((filterElementText.innerText).toLowerCase());
+          break;
+
+        case 'size':
+          filterItemsSize.push((filterElementText.innerText).toLowerCase());
+          break;
+
+        case 'avalible':
+          filterItemsAvalible.push(("card__availability avalible").toLowerCase());
+          break;
+      }
+    } else {
+      switch (e.target && e.target.dataset.filter) {
+        case 'cloth':
+          delFilterItem(filterItemsCloth, filterElementText.innerText);
+          break;
+
+        case 'size':
+          delFilterItem(filterItemsSize, filterElementText.innerText);
+          break;
+
+        case 'avalible':
+          delFilterItem(filterItemsAvalible, "card__availability avalible");
+          break;
+      }
+    }
+
+    newArray = primaryProductArray;
+
+    buildPriceFilteredArray(newArray, leftRangeInput.value, rightRangeInput.value);
+    buildFilteredArray(newArray, filterItemsCloth);
+    buildFilteredArray(newArray, filterItemsSize);
+    buildFilteredArray(newArray, filterItemsAvalible);
+    bildNewCardList(newArray);
+
+    cart();
+  });
+
+  rightRangeInput.addEventListener('change', () => {
+    newArray = primaryProductArray;
+
+    buildPriceFilteredArray(newArray, leftRangeInput.value, rightRangeInput.value);
+    buildFilteredArray(newArray, filterItemsCloth);
+    buildFilteredArray(newArray, filterItemsSize);
+    buildFilteredArray(newArray, filterItemsAvalible);
+    bildNewCardList(newArray);
+    
+    cart();
+  });
 };

@@ -195,7 +195,7 @@ const cart = () => {
   if (localStorage.getItem('cartItems')) {
     cart = JSON.parse(localStorage.getItem('cartItems'));
   }
-  const productItem = document.querySelectorAll('[data-cart="productItem"]');
+  let productItem = document.querySelectorAll('[data-cart="productItem"]');
   const cartContent = document.querySelector('.cart__content');
   const cartItems = document.querySelector('.cart__total-row-span-number');
   const cartItemsSum = document.querySelector('.cart__total-row-span-sum');
@@ -215,8 +215,8 @@ const cart = () => {
 
     cart.unshift(item);
     localStorage.setItem('cartItems', (JSON.stringify(cart)));
-    console.log('addItem');
   }
+
   function checkImgPath(elem) {
     let newPath = elem;
     if (newPath.includes('mid')) {
@@ -272,8 +272,6 @@ const cart = () => {
       cartImg.setAttribute('src', 'img/icons/cart.svg');
       cartImg.previousElementSibling.setAttribute('srcset', 'img/icons/cart.svg');
     }
-    console.log('rend');
-
   }
 
   function showTotalSum() {
@@ -288,8 +286,6 @@ const cart = () => {
     cartItems.innerHTML = `${totalquantity} шт.`;
     cartItemsSum.innerHTML = `${(totalSum).toFixed(2)} грн.`;
     topTotalSum.innerHTML = `${totalSum.toFixed(2)} грн.`;
-    console.log('showTotalSum');
-
   }
 
   function addBtnAction() {
@@ -300,8 +296,6 @@ const cart = () => {
           renderCartItems();
           changeCartNumber();
         }
-        console.log('addBtnAction');
-
       });
     });
   }
@@ -323,8 +317,6 @@ const cart = () => {
         cart[i].productNumber = number.innerText;
         localStorage.setItem('cartItems', (JSON.stringify(cart)));
         showTotalSum();
-        console.log('changeCartNumber');
-
       });
     });
   }
@@ -338,7 +330,6 @@ const cart = () => {
           cart.splice(i, 1);
           localStorage.setItem('cartItems', (JSON.stringify(cart)));
           renderCartItems();
-          console.log('delСartItem');
         }
       });
     });
@@ -361,171 +352,110 @@ const cart = () => {
 
 
 };
-window.addEventListener('DOMContentLoaded', () => {
+  const rangeSlider = () => {
+    
+    let inputLeft = document.querySelector('input.store__aside-input-left');
+    let inputRight = document.querySelector('input.store__aside-input-right');
+    let leftBtn = document.querySelector('.range-slider-left');
+    let rightBtn = document.querySelector('.range-slider-right');
+    let range = document.querySelector('.range-slider-range');
+    let rangeValue = document.querySelector(`[data-range='range']`);
 
-  let inputLeft = document.querySelector('input.store__aside-input-left');
-  let inputRight = document.querySelector('input.store__aside-input-right');
-  let leftBtn = document.querySelector('.range-slider-left');
-  let rightBtn = document.querySelector('.range-slider-right');
-  let range = document.querySelector('.range-slider-range');
-  let rangeValue = document.querySelector(`[data-range='range']`);
+    function getLeftValue() {
+      inputLeft.value = Math.min(+inputLeft.value, +inputRight.value - 1);
+      let value = ((+inputLeft.value - +inputLeft.min) / (+inputLeft.max - +inputLeft.min)) * 100;
+      leftBtn.style.left = `${value}%`;
+      range.style.left = `${value}%`;
+      initRangeValue();
+    }
 
-  function getLeftValue() {
-    inputLeft.value = Math.min(+inputLeft.value, +inputRight.value - 1);
-    let value = ((+inputLeft.value - +inputLeft.min) / (+inputLeft.max - +inputLeft.min)) * 100;
-    leftBtn.style.left = `${value}%`;
-    range.style.left = `${value}%`;
-    initRangeValue();
-  }
+    function getRightValue() {
+      inputRight.value = Math.max(+inputRight.value, +inputLeft.value + 1);
+      let value = ((+inputRight.value - +inputRight.min) / (+inputRight.max - +inputRight.min)) * 100;
+      rightBtn.style.right = `${100 - value}%`;
+      range.style.right = `${100 - value}%`;
+      initRangeValue();
+    }
 
-  function getRightValue() {
-    inputRight.value = Math.max(+inputRight.value, +inputLeft.value + 1);
-    let value = ((+inputRight.value - +inputRight.min) / (+inputRight.max - +inputRight.min)) * 100;
-    rightBtn.style.right = `${100 - value}%`;
-    range.style.right = `${100 - value}%`;
-    initRangeValue();
-  }
+    function initRangeValue() {
+      rangeValue.innerText = `₴ ${(+inputLeft.value).toFixed(2)} - ₴ ${(+inputRight.value).toFixed(2)}`;
+    }
 
-  function initRangeValue() {
-    rangeValue.innerText = `₴ ${(+inputLeft.value).toFixed(2)} - ₴ ${(+inputRight.value).toFixed(2)}`;
-  }
-  
-  try {
-    inputLeft.addEventListener('input', () => {
-      rightBtn.style.zIndex = "1";
-      leftBtn.style.zIndex = "2";
-      inputRight.style.zIndex = "3";
-      inputLeft.style.zIndex = "4";
+    try {
+      inputLeft.addEventListener('input', () => {
+        rightBtn.style.zIndex = "1";
+        leftBtn.style.zIndex = "2";
+        inputRight.style.zIndex = "3";
+        inputLeft.style.zIndex = "4";
+        getLeftValue();
+      });
+
+      inputRight.addEventListener('input', () => {
+        rightBtn.style.zIndex = "2";
+        leftBtn.style.zIndex = "1";
+        inputRight.style.zIndex = "4";
+        inputLeft.style.zIndex = "3";
+        getRightValue();
+      });
+
       getLeftValue();
-    });
-
-    inputRight.addEventListener('input', () => {
-      rightBtn.style.zIndex = "2";
-      leftBtn.style.zIndex = "1";
-      inputRight.style.zIndex = "4";
-      inputLeft.style.zIndex = "3";
       getRightValue();
-    });
+    } catch (error) {
 
-    getLeftValue();
-    getRightValue();
-  } catch (error) {
-
-  }
-});
+    }
+  };
 const storeFilter = () => {
   const primaryProductArray = [];
   let productItem = document.querySelectorAll('[data-cart="productItem"]');
   let filterBtnBlock = document.querySelector('.main__block-inner');
   let newArray = primaryProductArray;
+  let rightRangeInput = document.querySelector('.store__aside-input-right');
+  let leftRangeInput = document.querySelector('.store__aside-input-left');
 
-  let filterItemsPrice = [];
   let filterItemsCloth = [];
   let filterItemsSize = [];
   let filterItemsAvalible = [];
 
-  productItem.forEach(elem => {
-    let item = {};
+  function initProdCardList() {
+    productItem.forEach(elem => {
+      let item = {};
 
-    item.cartClass = elem.className;
-    item.cartLink = elem.querySelector('.card__img-link').pathname;
-    item.imgPath = elem.querySelector('[data-cart="img"]').src;
-    item.title = elem.querySelector('[data-cart="productTitle"]').innerText;
-    item.cloth = (elem.querySelector('[data-cart="productСloth"]').innerText).toLowerCase();
-    item.size = elem.querySelector('[data-cart="productSize"]').innerText;
-    item.price = (elem.querySelector('[data-cart="productPrice"]').innerText).replace(/\D/g, '');
-    item.avalible = elem.querySelector('.card__availability').className;
-    item.filterArray = [(item.cloth.toLowerCase()), (item.size).toLowerCase(), (item.price.toLowerCase()), (item.avalible.toLowerCase())];
+      item.cartClass = elem.className;
+      item.cartLink = elem.querySelector('.card__img-link').pathname;
+      item.imgPath = elem.querySelector('[data-cart="img"]').src;
+      item.title = elem.querySelector('[data-cart="productTitle"]').innerText;
+      item.cloth = (elem.querySelector('[data-cart="productСloth"]').innerText).toLowerCase();
+      item.size = elem.querySelector('[data-cart="productSize"]').innerText;
+      item.price = (elem.querySelector('[data-cart="productPrice"]').innerText).replace(/\D/g, '');
+      item.avalible = elem.querySelector('.card__availability').className;
+      item.filterArray = [(item.cloth.toLowerCase()), (item.size).toLowerCase(), (item.price.toLowerCase()), (item.avalible.toLowerCase())];
 
-    primaryProductArray.push(item);
-  });
-
-
-  filterBtnBlock.addEventListener('click', (e) => {
-    let filterElementText = e.target.nextElementSibling;
-    if (e.target.checked) {
-      switch (e.target && e.target.dataset.filter) {
-        case 'cloth':
-          filterItemsCloth.push((filterElementText.innerText).toLowerCase());
-          break;
-
-        case 'size':
-          filterItemsSize.push((filterElementText.innerText).toLowerCase());
-          break;
-
-        case 'avalible':
-          filterItemsAvalible.push(("card__availability avalible").toLowerCase());
-          break;
-      }
-    } else {
-      switch (e.target && e.target.dataset.filter) {
-        case 'cloth':
-          delFilterItem(filterItemsCloth, filterElementText.innerText);
-          break;
-
-        case 'size':
-          delFilterItem(filterItemsSize, filterElementText.innerText);
-          break;
-
-        case 'avalible':
-          delFilterItem(filterItemsAvalible, "card__availability avalible");
-          break;
-      }
-    }
-
-    newArray = primaryProductArray;
-
-    buildFilteredArray(newArray, filterItemsCloth);
-    buildFilteredArray(newArray, filterItemsSize);
-    buildFilteredArray(newArray, filterItemsAvalible);
-
-    bildNewCardList(newArray);
-  });
-
-  initPriceRange();
-
-  function buildPriceFilteredArray(a, b) {
-    if (b.length > 0) {
-      newArray = a.filter(elem => {
-        let check = false;
-
-        b.forEach(item => {
-          elem.filterArray.forEach(filter => {
-            if (item === filter) {
-              check = true;
-            }
-          });
-        });
-
-        if (check) {
-          return true;
-        }
-      });
-    }
-    console.log(newArray);
+      primaryProductArray.push(item);
+    });
   }
 
+  function buildPriceFilteredArray(a, b, c) {
+    newArray = a.filter(elem => {
+      let check = false;
 
+      if (+b <= +elem.price & +elem.price <= +c) {
+        check = true;
+      }
 
-
-
-
-
-
-
-
-
-
-
-
-
+      if (check) {
+        return true;
+      }
+    });
+  }
 
   function initPriceRange() {
+    let inputPriceMaxValue = document.querySelector('.store__aside-input-right');
+    let inputPriceMinValue = document.querySelector('.store__aside-input-left');
     let minPrice = 9999999;
     let maxPrice = 0;
 
     primaryProductArray.forEach(elem => {
-      
+
       if (+elem.price > maxPrice) {
         maxPrice = elem.price;
       }
@@ -533,16 +463,15 @@ const storeFilter = () => {
       if (+elem.price < minPrice) {
         minPrice = elem.price;
       }
-
-
-
-
-
-
-      
     });
 
-    console.log(minPrice, maxPrice);
+    inputPriceMaxValue.max = maxPrice;
+    inputPriceMaxValue.min = minPrice;
+    inputPriceMinValue.max = maxPrice;
+    inputPriceMinValue.min = minPrice;
+
+    inputPriceMaxValue.value = maxPrice;
+    inputPriceMinValue.value = minPrice;
   }
 
   function buildFilteredArray(a, b) {
@@ -563,14 +492,12 @@ const storeFilter = () => {
         }
       });
     }
-    console.log(newArray);
   }
 
   function delFilterItem(a, b) {
     a.forEach((elem, i) => {
       if (elem === (b).toLowerCase()) {
         a.splice(i, 1);
-        console.log(a);
       }
     });
   } // a - curent array , b - comparative element
@@ -628,6 +555,63 @@ const storeFilter = () => {
     }
   }
 
+  initProdCardList();
+  initPriceRange();
+
+  filterBtnBlock.addEventListener('click', (e) => {
+    let filterElementText = e.target.nextElementSibling;
+    if (e.target && e.target.checked) {
+      switch (e.target && e.target.dataset.filter) {
+        case 'cloth':
+          filterItemsCloth.push((filterElementText.innerText).toLowerCase());
+          break;
+
+        case 'size':
+          filterItemsSize.push((filterElementText.innerText).toLowerCase());
+          break;
+
+        case 'avalible':
+          filterItemsAvalible.push(("card__availability avalible").toLowerCase());
+          break;
+      }
+    } else {
+      switch (e.target && e.target.dataset.filter) {
+        case 'cloth':
+          delFilterItem(filterItemsCloth, filterElementText.innerText);
+          break;
+
+        case 'size':
+          delFilterItem(filterItemsSize, filterElementText.innerText);
+          break;
+
+        case 'avalible':
+          delFilterItem(filterItemsAvalible, "card__availability avalible");
+          break;
+      }
+    }
+
+    newArray = primaryProductArray;
+
+    buildPriceFilteredArray(newArray, leftRangeInput.value, rightRangeInput.value);
+    buildFilteredArray(newArray, filterItemsCloth);
+    buildFilteredArray(newArray, filterItemsSize);
+    buildFilteredArray(newArray, filterItemsAvalible);
+    bildNewCardList(newArray);
+
+    cart();
+  });
+
+  rightRangeInput.addEventListener('change', () => {
+    newArray = primaryProductArray;
+
+    buildPriceFilteredArray(newArray, leftRangeInput.value, rightRangeInput.value);
+    buildFilteredArray(newArray, filterItemsCloth);
+    buildFilteredArray(newArray, filterItemsSize);
+    buildFilteredArray(newArray, filterItemsAvalible);
+    bildNewCardList(newArray);
+    
+    cart();
+  });
 };
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -741,6 +725,8 @@ window.addEventListener("DOMContentLoaded", () => {
     openCart(); // при натисканні відкривається вікно корзини
     cart();
     storeFilter();
+    rangeSlider();
+
 
   } catch (error) {
     
