@@ -36,7 +36,7 @@ const cart = () => {
 
   function renderCartItems() {
     let cartItemsList = '';
-    const cartImg = document.querySelector('[data-cart="cartImg"]')
+    const cartImg = document.querySelector('[data-cart="cartImg"]');
 
     if (cart.length > 0) {
       cart.forEach(elem => {

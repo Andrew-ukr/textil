@@ -227,7 +227,7 @@ const cart = () => {
 
   function renderCartItems() {
     let cartItemsList = '';
-    const cartImg = document.querySelector('[data-cart="cartImg"]')
+    const cartImg = document.querySelector('[data-cart="cartImg"]');
 
     if (cart.length > 0) {
       cart.forEach(elem => {
@@ -417,6 +417,7 @@ const storeFilter = () => {
   const primaryProductArray = [];
   let productItem = document.querySelectorAll('[data-cart="productItem"]');
   let filterBtnBlock = document.querySelector('.main__block-inner');
+  let newArray = primaryProductArray;
 
   let filterItemsPrice = [];
   let filterItemsCloth = [];
@@ -430,7 +431,7 @@ const storeFilter = () => {
     item.cartLink = elem.querySelector('.card__img-link').pathname;
     item.imgPath = elem.querySelector('[data-cart="img"]').src;
     item.title = elem.querySelector('[data-cart="productTitle"]').innerText;
-    item.cloth = elem.querySelector('[data-cart="productСloth"]').innerText;
+    item.cloth = (elem.querySelector('[data-cart="productСloth"]').innerText).toLowerCase();
     item.size = elem.querySelector('[data-cart="productSize"]').innerText;
     item.price = (elem.querySelector('[data-cart="productPrice"]').innerText).replace(/\D/g, '');
     item.avalible = elem.querySelector('.card__availability').className;
@@ -441,23 +442,68 @@ const storeFilter = () => {
 
 
   filterBtnBlock.addEventListener('click', (e) => {
+    let filterElementText = e.target.nextElementSibling;
     if (e.target.checked) {
       switch (e.target && e.target.dataset.filter) {
         case 'cloth':
-          console.log(1);
-  
-  
+          filterItemsCloth.push((filterElementText.innerText).toLowerCase());
           break;
-  
+
+        case 'size':
+          filterItemsSize.push((filterElementText.innerText).toLowerCase());
+          break;
+
+        case 'avalible':
+          filterItemsAvalible.push(("card__availability avalible").toLowerCase());
+          break;
       }
     } else {
-      
+      switch (e.target && e.target.dataset.filter) {
+        case 'cloth':
+          delFilterItem(filterItemsCloth, filterElementText.innerText);
+          break;
+
+        case 'size':
+          delFilterItem(filterItemsSize, filterElementText.innerText);
+          break;
+
+        case 'avalible':
+          delFilterItem(filterItemsAvalible, "card__availability avalible");
+          break;
+      }
     }
-    
 
+    newArray = primaryProductArray;
 
+    buildFilteredArray(newArray, filterItemsCloth);
+    buildFilteredArray(newArray, filterItemsSize);
+    buildFilteredArray(newArray, filterItemsAvalible);
+
+    bildNewCardList(newArray);
   });
 
+  initPriceRange();
+
+  function buildPriceFilteredArray(a, b) {
+    if (b.length > 0) {
+      newArray = a.filter(elem => {
+        let check = false;
+
+        b.forEach(item => {
+          elem.filterArray.forEach(filter => {
+            if (item === filter) {
+              check = true;
+            }
+          });
+        });
+
+        if (check) {
+          return true;
+        }
+      });
+    }
+    console.log(newArray);
+  }
 
 
 
@@ -474,9 +520,60 @@ const storeFilter = () => {
 
 
 
+  function initPriceRange() {
+    let minPrice = 9999999;
+    let maxPrice = 0;
+
+    primaryProductArray.forEach(elem => {
+      
+      if (+elem.price > maxPrice) {
+        maxPrice = elem.price;
+      }
+
+      if (+elem.price < minPrice) {
+        minPrice = elem.price;
+      }
 
 
 
+
+
+
+      
+    });
+
+    console.log(minPrice, maxPrice);
+  }
+
+  function buildFilteredArray(a, b) {
+    if (b.length > 0) {
+      newArray = a.filter(elem => {
+        let check = false;
+
+        b.forEach(item => {
+          elem.filterArray.forEach(filter => {
+            if (item === filter) {
+              check = true;
+            }
+          });
+        });
+
+        if (check) {
+          return true;
+        }
+      });
+    }
+    console.log(newArray);
+  }
+
+  function delFilterItem(a, b) {
+    a.forEach((elem, i) => {
+      if (elem === (b).toLowerCase()) {
+        a.splice(i, 1);
+        console.log(a);
+      }
+    });
+  } // a - curent array , b - comparative element
 
   function bildNewCardList(array) {
     let cardListBlock = document.querySelector('.main__products');
@@ -518,7 +615,17 @@ const storeFilter = () => {
       `;
     });
 
-    cardListBlock.innerHTML = cardList;
+    if (array.length > 0) {
+      cardListBlock.innerHTML = cardList;
+
+    } else {
+      cardListBlock.innerHTML = `
+    <span class="cart__content-empty">
+      Товарів з такими параметрами не знайдено :(
+    </span>
+    `;
+
+    }
   }
 
 };
