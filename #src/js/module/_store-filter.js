@@ -149,6 +149,15 @@ const storeFilter = () => {
     }
   }
 
+  function checkFilterItems() {
+    let filterCheckbox = document.querySelectorAll('.main__checkbox');
+
+    filterCheckbox.forEach(elem => {
+      elem.spellcheck = false;
+    });
+  }
+
+  checkFilterItems();
   initProdCardList();
   initPriceRange();
 
@@ -195,15 +204,4 @@ const storeFilter = () => {
     cart();
   });
 
-  rightRangeInput.addEventListener('change', () => {
-    newArray = primaryProductArray;
-
-    buildPriceFilteredArray(newArray, leftRangeInput.value, rightRangeInput.value);
-    buildFilteredArray(newArray, filterItemsCloth);
-    buildFilteredArray(newArray, filterItemsSize);
-    buildFilteredArray(newArray, filterItemsAvalible);
-    bildNewCardList(newArray);
-    
-    cart();
-  });
 };
