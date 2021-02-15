@@ -19,7 +19,7 @@ const cart = () => {
     item.productSize = elem.querySelector('[data-cart="productSize"]').innerText;
     item.productSizeNavolochka = elem.querySelector('[data-cart="productSizeNavolochka"]').value;
     item.productNumber = elem.querySelector('[data-cart="productNumber"]').innerText;
-    item.productPrice = (elem.querySelector('[data-cart="productPrice"]').innerText).replace( /\D/g , '');
+    item.productPrice = (elem.querySelector('[data-cart="productPrice"]').innerText).replace(/\D/g, '');
     item.img = elem.querySelector('[data-cart="img"]').getAttribute('src');
 
     cart.unshift(item);
@@ -29,8 +29,8 @@ const cart = () => {
   function checkImgPath(elem) {
     let newPath = elem;
     if (newPath.includes('mid')) {
-      newPath = newPath.replace('-mid','-small');
-    } 
+      newPath = newPath.replace('-mid', '-small');
+    }
     return newPath;
   }
 
@@ -109,6 +109,17 @@ const cart = () => {
     });
   }
 
+  function clearCart() {
+    let clearBtn = document.querySelector(`[data-cart="clear"]`);
+
+    clearBtn.addEventListener('click', () => {
+      cart = [];
+      localStorage.setItem('cartItems', (JSON.stringify(cart)));
+      renderCartItems();
+      changeCartNumber();
+    });
+  }
+
   function changeCartNumber() {
     let catrItems = document.querySelectorAll(`.cart__content-item`);
 
@@ -149,6 +160,7 @@ const cart = () => {
     renderCartItems();
     changeCartNumber();
     delСartItem();
+    clearCart();
   }
 
   init();

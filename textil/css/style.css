@@ -1625,6 +1625,22 @@ select:focus {
   margin-top: 10px;
 }
 
+.cart__btn + .cart__btn {
+  margin-top: 5px;
+  background-color: #aaaaaa;
+  font-size: 12px;
+}
+
+.cart__btn img {
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+}
+
+.cart__btn span {
+  pointer-events: none;
+}
+
 .cart__content-item {
   background-color: #fff;
   padding: 15px 5px;
