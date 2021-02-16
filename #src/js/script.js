@@ -1,5 +1,6 @@
 ﻿@@include('../../node_modules/swiper/swiper-bundle.min.js')
 @@include('module/_modal.js')
+@@include('module/_shortMassage.js')
 @@include('module/_modal-mr.js')
 @@include('module/_tabs.js')
 @@include('module/_to-top-btn.js')
@@ -130,7 +131,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   try {
-    openSizeTable('.product__size-table', '.modal__content'); //відкривається модальне вікно з таблицею розмірів
+    openSizeTable('.product__size-table'); //відкривається модальне вікно з таблицею розмірів
     quantity('product__quantity', 'product__quantity-number'); // при натисканні кнопок + / - змінюється кількість продукці\
     selectProdPrice(); // при події селектора вибору розміру комплекту відбувається зміна поточної ціни + змінюється назва заголовку товару 
 

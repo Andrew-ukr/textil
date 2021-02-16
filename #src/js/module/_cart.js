@@ -26,6 +26,17 @@ const cart = () => {
     localStorage.setItem('cartItems', (JSON.stringify(cart)));
   }
 
+  function checkingRepetition(elem) {
+    let title = elem.querySelector('[data-cart="productTitle"]').innerText;
+    let navolochka = elem.querySelector('[data-cart="productSizeNavolochka"]').value;
+
+    let newCart = cart.some(item => {
+      return (item.title === title && item.productSizeNavolochka === navolochka);
+    });
+    
+    return newCart;
+  }
+
   function checkImgPath(elem) {
     let newPath = elem;
     if (newPath.includes('mid')) {
@@ -101,9 +112,16 @@ const cart = () => {
     productItem.forEach(elem => {
       elem.addEventListener('click', (e) => {
         if (e.target && e.target.dataset.cart === 'addBtn') {
-          addItem(elem);
-          renderCartItems();
-          changeCartNumber();
+
+          if (!checkingRepetition(elem)) {
+            addItem(elem);
+            renderCartItems();
+            changeCartNumber();
+            shortMassage("modal-massage", "modal-massage__content", `Товар додано до корзину`, `#badc58`, 2);
+
+          } else {
+            shortMassage("modal-massage", "modal-massage__content", `Даний товар уже в корзині`, `#ffbe76`, 2);
+          }
         }
       });
     });
@@ -164,12 +182,5 @@ const cart = () => {
   }
 
   init();
-
-
-
-
-
-
-
 
 };

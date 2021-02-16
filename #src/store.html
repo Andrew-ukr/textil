@@ -20,7 +20,7 @@
       <div class="container">
         <div class="main__wrapper">
           <div class="main__block">
-            <button class="main__filter _btn">
+            <button class="main__filter _btn" data-cart="filterBtn">
               <img src="img/icons/filter.svg" alt="">
               <span>Фільтр</span>
             </button>
@@ -56,22 +56,22 @@
               <div class="main__item">
                 <div class="main__subtitle">Розмір</div>
                 <ul class="main__filter-list">
-                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="oneAndHulf"
-                      id="3" data-filter="size"><label class="main__label" for="3">Півтораспальний</label></li>
-                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="double"
-                      id="4" data-filter="size"><label class="main__label" for="4">Двоспальний</label></li>
-                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="euro" id="5" data-filter="size"><label
-                      class="main__label" for="5">Євро</label></li>
-                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="family"
-                      id="6" data-filter="size"><label class="main__label" for="6">Сімейний</label></li>
+                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="oneAndHulf" id="3"
+                      data-filter="size"><label class="main__label" for="3">Півтораспальний</label></li>
+                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="double" id="4"
+                      data-filter="size"><label class="main__label" for="4">Двоспальний</label></li>
+                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="euro" id="5"
+                      data-filter="size"><label class="main__label" for="5">Євро</label></li>
+                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="family" id="6"
+                      data-filter="size"><label class="main__label" for="6">Сімейний</label></li>
                 </ul>
               </div>
 
               <div class="main__item">
                 <div class="main__subtitle">Наявність</div>
                 <ul class="main__filter-list">
-                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="avalible"
-                      id="7"  data-filter="avalible"><label class="main__label" for="7">В наявності</label></li>
+                  <li class="main__filter-item"><input class="main__checkbox" type="checkbox" name="avalible" id="7"
+                      data-filter="avalible"><label class="main__label" for="7">В наявності</label></li>
                 </ul>
               </div>
             </div>
@@ -96,6 +96,7 @@
 
   @@include('template/_footer.html')
   @@include('template/_modal.html')
+  @@include('template/_short-massage.html')
   @@include('template/_cart.html')
 
   <script src="./js/script.js"></script>

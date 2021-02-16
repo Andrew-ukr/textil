@@ -1,0 +1,28 @@
+.modal-massage {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  pointer-events: none;
+
+  &.active{
+    display: flex;
+  }
+}
+
+.modal-massage__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+  width: 100%;
+  min-height: 35px;
+  border-radius: 5px;
+  // background-color: #badc58;
+  // background-color: #ffbe76;
+}

@@ -10,6 +10,14 @@ const storeFilter = () => {
   let filterItemsSize = [];
   let filterItemsAvalible = [];
 
+  function showFilter() {
+    let filterBtn = document.querySelector('[data-cart="filterBtn"]');
+
+    filterBtn.addEventListener('click', () => {
+      filterBtn.nextElementSibling.classList.toggle('main__block-inner--show');
+    });
+  }
+
   function initProdCardList() {
     productItem.forEach(elem => {
       let item = {};
@@ -157,10 +165,6 @@ const storeFilter = () => {
     });
   }
 
-  checkFilterItems();
-  initProdCardList();
-  initPriceRange();
-
   filterBtnBlock.addEventListener('click', (e) => {
     let filterElementText = e.target.nextElementSibling;
     if (e.target && e.target.checked) {
@@ -204,4 +208,8 @@ const storeFilter = () => {
     cart();
   });
 
+  checkFilterItems();
+  initProdCardList();
+  initPriceRange();
+  showFilter();
 };

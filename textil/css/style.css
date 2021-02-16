@@ -1434,7 +1434,7 @@ select:focus {
   font-size: calc(12px + 2 * ((100vw - 320px) / 1600));
 }
 
-.modal {
+.modal-massage {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -1447,54 +1447,30 @@ select:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(0, 0, 0, 0.4);
   z-index: 5;
+  pointer-events: none;
 }
 
-.modal.active {
+.modal-massage.active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.modal__block {
-  position: relative;
-  padding: 15px;
-  background-color: #ffffff;
-  padding-top: 40px;
-  border-radius: 5px;
-}
-
-.modal__close {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  cursor: pointer;
-}
-
-.modal__close img {
-  display: block;
+.modal-massage__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 300px;
   width: 100%;
-  height: 100%;
-  -o-object-position: center;
-     object-position: center;
-}
-
-.modal__size-table {
-  border-collapse: collapse;
-}
-
-.modal__size-table-row {
-  border: 1px solid #dddddd;
-}
-
-.modal__size-table-col {
-  border: 1px solid #dddddd;
-  padding: 8px 5px;
-  text-align: center;
-  font-size: calc(12px + 2 * ((100vw - 320px) / 1600));
+  min-height: 35px;
+  border-radius: 5px;
 }
 
 .cart {
@@ -1713,7 +1689,7 @@ select:focus {
 }
 
 .main__block:nth-child(1) {
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .main__block:nth-child(2) {
@@ -1739,6 +1715,7 @@ select:focus {
   -webkit-transition: .3s;
   -o-transition: .3s;
   transition: .3s;
+  margin-bottom: 20px;
 }
 
 .main__filter img {
@@ -1760,6 +1737,11 @@ select:focus {
 
 .main__block-inner {
   display: none;
+  margin-bottom: 20px;
+}
+
+.main__block-inner.main__block-inner--show {
+  display: block;
 }
 
 .main__products {
