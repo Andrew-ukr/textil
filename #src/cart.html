@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./css/style.min.css">
+  <title>Домашній текстиль Продукт 1</title>
+</head>
+
+<body>
+  <header class="header">
+    @@include('template/_header-top.html')
+
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <section class="order">
+        <div class="order__block">
+          <div class="order__list">
+            <table class="order__table">
+              <thead class="order__table-head">
+                <tr>
+                  <th class="order__table-photo">Фото</th>
+                  <th class="order__table-name">Назва товару</th>
+                  <th class="order__table-quantity">Кількість</th>
+                  <th class="order__table-price">Ціна</th>
+                  <th class="order__table-sum">Всього</th>
+                  <th class="order__table-del"></th>
+                </tr>
+              </thead>
+              <tbody class="order__table-body">
+                <tr>
+                  <td class="order__table-photo">
+                    <a href="#">
+                      <img src="img/product/prod01/3-small.jpg" alt="">
+                    </a>
+                  </td>
+                  <td class="order__table-name">
+                    <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum odit doloremque,
+                      facilis itaque alias quibusdam vel labore nisi? Modi ad sunt molestias quasi tempore est eligendi
+                      recusandae expedita tenetur aliquam?</a>
+                  </td>
+                  <td class="order__table-qty">
+                    <div class="cart__content-number product__quantity">
+                      <div class="product__quantity-minus">-</div>
+                      <div class="product__quantity-number" data-cart="productNumber">1</div>
+                      <div class="product__quantity-plus">+</div>
+                    </div>
+                  </td>
+                  <td class="order__table-price">
+                    <p>579 грн</p>
+                  </td>
+                  <td class="order__table-sum">
+                    <p>579 грн</p>
+                  </td>
+                  <td class="order__table-del">
+                    <button class="order__btn-del">
+                      <img src="img/icons/close.svg" alt="">
+                    </button>
+                  </td>
+      
+                </tr>
+              </tbody>
+            </table>
+            <div class="order__total">
+              <span>Всього:</span>
+              <span>0</span>
+              <span>грн</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div class="container">
+  </main>
+
+  @@include('template/_footer.html')
+  @@include('template/_modal.html')
+  @@include('template/_short-massage.html')
+  @@include('template/_cart.html')
+
+  <script src="./js/script.min.js"></script>
+
+</body>
+
+</html>

@@ -95,7 +95,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
 
 
-    if (document.documentElement.scrollTop > 1000) {
+    if (document.documentElement.scrollTop > 500) {
       document.querySelector('.mobile-block').style.paddingRight = '65px';
       document.querySelector('.up-btn').style.opacity = '1';
       document.querySelector('.up-btn').style.visibility = 'visible';
@@ -779,8 +779,10 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   try {
-    openSizeTable('.product__size-table'); //відкривається модальне вікно з таблицею розмірів
     quantity('product__quantity', 'product__quantity-number'); // при натисканні кнопок + / - змінюється кількість продукці\
+
+    openSizeTable('.product__size-table'); //відкривається модальне вікно з таблицею розмірів
+
     selectProdPrice(); // при події селектора вибору розміру комплекту відбувається зміна поточної ціни + змінюється назва заголовку товару 
 
   } catch (error) {

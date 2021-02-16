@@ -1,0 +1,88 @@
+.order {}
+
+.order__block {}
+
+.order__list {}
+
+.order__table {
+  border-collapse: collapse;
+}
+
+.order__table-head {
+  width: 100%;
+  background-color: $backgroundColor;
+  border: 1px solid rgb(208, 208, 208);
+
+  th {
+    padding: 10px;
+    min-width: 150px;
+
+    &.order__table-del {
+      min-width: 35px;
+    }
+  }
+}
+
+.order__table-photo {
+  display: block;
+
+  img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+.order__table-name {}
+
+.order__table-quantity {}
+
+.order__table-price {}
+
+.order__table-sum {}
+
+.order__btn-del {
+  width: 15px;
+  background: transparent;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+}
+
+
+.order__table-body {
+  tr {
+    border: 1px solid rgb(208, 208, 208);
+
+  }
+
+  td {
+    text-align: center;
+    padding: 10px;
+  }
+}
+
+.order__table-qty {
+  .product__quantity {
+    margin: 0 auto;
+  }
+}
+
+.cart__content-number {}
+
+.product__quantity {}
+
+.product__quantity-minus {}
+
+.product__quantity-number {}
+
+.product__quantity-plus {}
+
+.order__total {
+  margin-top: 20px;
+  text-align: right;
+  font-weight: 700;
+}

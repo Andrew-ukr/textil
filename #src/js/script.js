@@ -131,8 +131,10 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   try {
-    openSizeTable('.product__size-table'); //відкривається модальне вікно з таблицею розмірів
     quantity('product__quantity', 'product__quantity-number'); // при натисканні кнопок + / - змінюється кількість продукці\
+
+    openSizeTable('.product__size-table'); //відкривається модальне вікно з таблицею розмірів
+
     selectProdPrice(); // при події селектора вибору розміру комплекту відбувається зміна поточної ціни + змінюється назва заголовку товару 
 
   } catch (error) {
