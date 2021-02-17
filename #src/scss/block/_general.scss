@@ -105,3 +105,15 @@ section {
 .ui {
 	padding: 50px;
 }
+
+textarea{
+  transition: .3s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .3s;
+    border: 1px solid #007AFF;
+    box-shadow: 0 0 5px #007AFF;
+  }
+}

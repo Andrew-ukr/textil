@@ -95,7 +95,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
 
 
-    if (document.documentElement.scrollTop > 500) {
+    if (document.documentElement.scrollTop > 400) {
       document.querySelector('.mobile-block').style.paddingRight = '65px';
       document.querySelector('.up-btn').style.opacity = '1';
       document.querySelector('.up-btn').style.visibility = 'visible';
@@ -105,7 +105,7 @@ window.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.mobile-block').style.paddingRight = '0px';
     }
 
-    if (document.documentElement.scrollTop > 500) {
+    if (document.documentElement.scrollTop > 400) {
       document.querySelector('.mobile-block').classList.add('mobile-block--active');
       document.querySelector('.mobile-block').style.opacity = '1';
     } else {

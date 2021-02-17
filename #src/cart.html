@@ -32,39 +32,6 @@
                 </tr>
               </thead>
               <tbody class="order__table-body">
-
-                <!-- <tr>
-                  <td class="order__table-photo">
-                    <a href="#">
-                      <img src="img/product/prod01/3-small.jpg" alt="">
-                    </a>
-                  </td>
-                  <td class="order__table-name">
-                    <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum odit doloremque,
-                      facilis itaque alias quibusdam vel labore nisi? Modi ad sunt molestias quasi tempore est eligendi
-                      recusandae expedita tenetur aliquam?</a>
-                  </td>
-                  <td class="order__table-qty">
-                    <div class="cart__content-number product__quantity">
-                      <div class="product__quantity-minus">-</div>
-                      <div class="product__quantity-number" data-cart="productNumber">1</div>
-                      <div class="product__quantity-plus">+</div>
-                    </div>
-                  </td>
-                  <td class="order__table-price">
-                    <p>579 грн</p>
-                  </td>
-                  <td class="order__table-sum">
-                    <p>579 грн</p>
-                  </td>
-                  <td class="order__table-del">
-                    <button class="order__btn-del">
-                      <img src="img/icons/close.svg" alt="">
-                    </button>
-                  </td>
-      
-                </tr> -->
-                
               </tbody>
             </table>
             <div class="order__total">
@@ -73,6 +40,78 @@
               <span>грн</span>
             </div>
           </div>
+        </div>
+        
+        <div class="order__block">
+          <div class="order__block-item">
+            <div class="order__title">
+              <img src="#" alt="">
+              <span>Контактна інформація</span>
+            </div>
+            <input type="text" class="order__input" placeholder="Імя*" required></input>
+            <input type="text" class="order__input" placeholder="Прізвище"></input>
+            <input type="text" class="order__input" placeholder="По батькові"></input>
+            <input type="tel" class="order__input" placeholder="Телефон*" required></input>
+            <input type="email" class="order__input" placeholder="E-mail"></input>
+          </div>
+
+          <div class="order__block-item">
+            <div class="order__title">
+              <img src="#" alt="">
+              <span>Спосіб доставки</span>
+            </div>
+            <label class="order__input-label" for="delivery1">
+              <input type="radio" class="order__radio" name="delivery" id="delivery1" checked>
+              <span> Нова Пошта</span>
+            </label>
+            <label class="order__input-label" for="delivery2">
+              <input type="radio" class="order__radio" name="delivery" id="delivery2">
+              <span> Інший вид доставки</span>
+            </label>
+            <div class="order__delivery-var">
+
+              <select class="order__select" name="" id="">
+                <option value="" selected>У відділення</option>
+                <option value="">За адресою</option>
+              </select>
+
+              <textarea class="order__texarea" name="texarea" id="" rows="2"
+                placeholder="Введіть назву Вашого міста та № відділеня Нової пошти "></textarea>
+            </div>
+          </div>
+
+          <div class="order__block-item">
+            <div class="order__title">
+              <img src="#" alt="">
+              <span>Спосіб оплати </span>
+            </div>
+            <label class="order__input-label" for="pay1">
+              <input type="radio" class="order__radio" name="pay" id="pay1" checked>
+              <span> Карта банку</span>
+            </label>
+            <label class="order__input-label" for="pay2">
+              <input type="radio" class="order__radio" name="pay" id="pay2">
+              <span> Накладений платіж</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="order__block">
+
+          <div class="order__block-item">
+            <div class="order__title">
+              <img src="#" alt="">
+              <span>Коментар до замовлення</span>
+            </div>
+              <textarea class="order__texarea" name="texarea" id="" rows="5"
+                placeholder="Ваш коментар"></textarea>
+            </div>
+          </div>
+
+          <button class="order__btn _btn">
+            підтвердити замовлення
+          </button>
+
         </div>
       </section>
     </div class="container">
