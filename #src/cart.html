@@ -32,7 +32,8 @@
                 </tr>
               </thead>
               <tbody class="order__table-body">
-                <tr>
+
+                <!-- <tr>
                   <td class="order__table-photo">
                     <a href="#">
                       <img src="img/product/prod01/3-small.jpg" alt="">
@@ -62,12 +63,13 @@
                     </button>
                   </td>
       
-                </tr>
+                </tr> -->
+                
               </tbody>
             </table>
             <div class="order__total">
               <span>Всього:</span>
-              <span>0</span>
+              <span data-cart="totalSum">0</span>
               <span>грн</span>
             </div>
           </div>
@@ -81,7 +83,7 @@
   @@include('template/_short-massage.html')
   @@include('template/_cart.html')
 
-  <script src="./js/script.min.js"></script>
+  <script src="./js/script.js"></script>
 
 </body>
 

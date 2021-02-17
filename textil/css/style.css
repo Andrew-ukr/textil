@@ -1124,6 +1124,10 @@ section {
   line-height: 1.2;
 }
 
+.product__link {
+  display: none;
+}
+
 .product__item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1919,10 +1923,10 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
 
 .order__table {
   border-collapse: collapse;
+  width: 100%;
 }
 
 .order__table-head {
-  width: 100%;
   background-color: #f3f3f3;
   border: 1px solid #d0d0d0;
 }

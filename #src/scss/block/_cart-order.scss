@@ -6,10 +6,10 @@
 
 .order__table {
   border-collapse: collapse;
+  width: 100%;
 }
 
 .order__table-head {
-  width: 100%;
   background-color: $backgroundColor;
   border: 1px solid rgb(208, 208, 208);
 
