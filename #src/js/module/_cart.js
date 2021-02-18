@@ -23,7 +23,7 @@ const cart = () => {
     item.productPrice = (elem.querySelector('[data-cart="productPrice"]').innerText).replace(/\D/g, '');
     item.img = elem.querySelector('[data-cart="img"]').getAttribute('src');
 
-    // item.link = elem.querySelector('[data-cart="linkPath"]').pathname;
+    item.link = elem.querySelector('[data-cart="linkPath"]').pathname;
 
     cart.unshift(item);
     localStorage.setItem('cartItems', (JSON.stringify(cart)));

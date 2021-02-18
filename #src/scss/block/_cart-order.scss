@@ -1,5 +1,4 @@
-.order {
-}
+.order {}
 
 .order__block {
   &+& {
@@ -107,6 +106,10 @@
 
 
 
+
+
+
+
 .order__block-item {
   display: flex;
   flex-direction: column;
@@ -166,6 +169,7 @@
   border: 1px solid rgb(208, 208, 208);
   padding: 5px;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .order__texarea {
@@ -178,4 +182,18 @@
 
 .order__btn {
   margin-top: 30px;
+}
+
+
+.order__select-block {
+  display: flex;
+  flex-direction: column;
+}
+.order__pay-features-wrapper {
+  background-color: rgb(255, 220, 154);
+  border-radius: 5px;
+  border: 1px solid #007AFF ;
+  padding: 10px;
+  margin-top: 20px;
+  line-height: 1.2;
 }

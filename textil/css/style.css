@@ -233,7 +233,11 @@ section {
   padding: 50px;
 }
 
-textarea {
+textarea,
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="email"] {
   -webkit-transition: .3s;
   -o-transition: .3s;
   transition: .3s;
@@ -241,13 +245,39 @@ textarea {
 
 textarea:hover,
 textarea:active,
-textarea:focus {
+textarea:focus,
+input[type="text"]:hover,
+input[type="text"]:active,
+input[type="text"]:focus,
+input[type="number"]:hover,
+input[type="number"]:active,
+input[type="number"]:focus,
+input[type="tel"]:hover,
+input[type="tel"]:active,
+input[type="tel"]:focus,
+input[type="email"]:hover,
+input[type="email"]:active,
+input[type="email"]:focus {
   -webkit-transition: .3s;
   -o-transition: .3s;
   transition: .3s;
   border: 1px solid #007AFF;
   -webkit-box-shadow: 0 0 5px #007AFF;
           box-shadow: 0 0 5px #007AFF;
+}
+
+input[type="radio"] {
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
+}
+
+input[type="radio"]:hover,
+input[type="radio"]:active,
+input[type="radio"]:focus {
+  -webkit-transition: .3s;
+  -o-transition: .3s;
+  transition: .3s;
 }
 
 .nav {
@@ -2084,6 +2114,7 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
   border: 1px solid #d0d0d0;
   padding: 5px;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .order__texarea {
@@ -2096,6 +2127,25 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
 
 .order__btn {
   margin-top: 30px;
+}
+
+.order__select-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.order__pay-features-wrapper {
+  background-color: #ffdc9a;
+  border-radius: 5px;
+  border: 1px solid #007AFF;
+  padding: 10px;
+  margin-top: 20px;
+  line-height: 1.2;
 }
 
 @media (min-width: 405px) {

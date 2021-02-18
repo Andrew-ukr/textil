@@ -106,7 +106,11 @@ section {
 	padding: 50px;
 }
 
-textarea{
+textarea,
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="email"]{
   transition: .3s;
 
   &:hover,
@@ -115,5 +119,15 @@ textarea{
     transition: .3s;
     border: 1px solid #007AFF;
     box-shadow: 0 0 5px #007AFF;
+  }
+}
+input[type="radio"]{
+  transition: .3s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    transition: .3s;
+
   }
 }
