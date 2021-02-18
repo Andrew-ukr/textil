@@ -8,8 +8,6 @@ const openCart = () => {
     cartModal.firstElementChild.classList.toggle('active');
     document.body.classList.add('body--lock');
     document.body.style.paddingRight = `${modalMR()}px`;
-
-
   });
 
   closeCartBtn.addEventListener('click', () => {

@@ -1972,22 +1972,25 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
   margin-top: 50px;
 }
 
-.order__block:nth-child(2) {
+.order__block-row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.order__block:nth-child(3) .order__block-item {
-  width: 100%;
+.order__block-row:nth-child(2) {
+  margin-top: 50px;
+  display: block;
 }
 
 .order__table {
   border-collapse: collapse;
   width: 100%;
+  min-height: 100px;
 }
 
 .order__table-head {
@@ -2025,6 +2028,18 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
   pointer-events: none;
 }
 
+.order__table-body {
+  position: relative;
+  overflow: hidden;
+}
+
+.order__table-body .cart__content-empty {
+  padding-top: 20px;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
 .order__table-body tr {
   border: 1px solid #d0d0d0;
 }
@@ -2052,7 +2067,11 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 30%;
+  width: 100%;
+}
+
+.order__block-item + .order__block-item {
+  margin-top: 30px;
 }
 
 .order__title {
@@ -2140,7 +2159,7 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
 }
 
 .order__pay-features-wrapper {
-  background-color: #ffdc9a;
+  background-color: #ffeac2;
   border-radius: 5px;
   border: 1px solid #007AFF;
   padding: 10px;
@@ -2320,6 +2339,24 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
 
   .main__products .card {
     width: 50%;
+  }
+
+  .order__block-row {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+
+  .order__block-item + .order__block-item {
+    margin-top: 0px;
+  }
+
+  .order__block-item {
+    width: 30%;
   }
 }
 

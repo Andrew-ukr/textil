@@ -37,6 +37,8 @@ const modal = (a, b, c, d = null) => {
 
   modalContent.innerHTML = `${d}`;
 };
+/* SmtpJS.com - v3.0.0 */
+var Email = { send: function (a) { return new Promise(function (n, e) { a.nocache = Math.floor(1e6 * Math.random() + 1), a.Action = "Send"; var t = JSON.stringify(a); Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (e) { n(e) }) }) }, ajaxPost: function (e, n, t) { var a = Email.createCORSRequest("POST", e); a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.onload = function () { var e = a.responseText; null != t && t(e) }, a.send(n) }, ajax: function (e, n) { var t = Email.createCORSRequest("GET", e); t.onload = function () { var e = t.responseText; null != n && n(e) }, t.send() }, createCORSRequest: function (e, n) { var t = new XMLHttpRequest; return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t } };
 const shortMassage = (window, windowContent = null, windowContentText = null, windowColor = null, timeOut = null) => {
   let massageWindow = document.querySelector(`.${window}`);
   let windowContentBlock = massageWindow.querySelector(`.${windowContent}`);
@@ -186,8 +188,6 @@ const openCart = () => {
     cartModal.firstElementChild.classList.toggle('active');
     document.body.classList.add('body--lock');
     document.body.style.paddingRight = `${modalMR()}px`;
-
-
   });
 
   closeCartBtn.addEventListener('click', () => {
@@ -751,7 +751,7 @@ const changeDelivery = () => {
 
     if (e.target && e.target.id === 'delivery1' && e.target.checked) {
       deliveryContent.innerHTML = `
-      <select class="order__select" name="" id="">
+      <select class="order__select" name="" data-delivery="adress">
       <option value="" selected>У відділення</option>
       <option value="">За адресою</option>
       </select>
@@ -760,6 +760,8 @@ const changeDelivery = () => {
       <input class="order__input" type="text" name="№ відділення" placeholder="№ відділення*" required>
       </div>
       `;
+
+      showDeliveryAdressForm();
     }
 
     if (e.target && e.target.id === 'delivery2' && e.target.checked) {
@@ -769,7 +771,7 @@ const changeDelivery = () => {
       <input class="order__input" type="text" name="Місто" placeholder="Місто*" required>
       <input class="order__input" type="text" name="Вулиця" placeholder="Вулиця*" required>
       <input class="order__input" type="number" name="№ будинку" placeholder="№ будинку*" required>
-      <input class="order__input" type="number" name="№ квартири" placeholder="№ квартири*" required>
+      <input class="order__input" type="number" name="№ квартири" placeholder="№ квартири">
       </div>
       `;
     }
@@ -781,13 +783,93 @@ const changeDelivery = () => {
     if (e.target && e.target.id === 'pay2' && e.target.checked) {
       payContent.innerHTML = `
       <div class="order__pay-features-wrapper">
-        Віправка наложеним платижем здійснюється при передоплаті за доставку
+        Віправка накладеним платижем здійснюється при передоплаті за доставку
       </div>
       `;
     }
 
   });
 
+  function showDeliveryAdressForm() {
+    let deliveryAdress = document.querySelector('[data-delivery="adress"]');
+
+    deliveryAdress.addEventListener('change', () => {
+      if (deliveryAdress.selectedIndex === 1) {
+        deliveryContent.innerHTML = `
+        <select class="order__select" name="" data-delivery="adress">
+        <option value="" >У відділення</option>
+        <option value="" selected>За адресою</option>
+        </select>
+        <div class="order__select-block">
+        <input class="order__input" type="text" name="Місто" placeholder="Місто*" required>
+        <input class="order__input" type="text" name="Вулиця" placeholder="Вулиця*" required>
+        <input class="order__input" type="number" name="№ будинку" placeholder="№ будинку*" required>
+        <input class="order__input" type="number" name="№ квартири" placeholder="№ квартири">
+        </div>
+        `;
+
+      } else {
+        deliveryContent.innerHTML = `
+        <select class="order__select" name="" data-delivery="adress">
+        <option value="" selected>У відділення</option>
+        <option value="">За адресою</option>
+        </select>
+        <div class="order__select-block">
+        <input class="order__input" type="text" name="Місто" placeholder="Місто*" required>
+        <input class="order__input" type="text" name="№ відділення" placeholder="№ відділення*" required>
+        </div>
+        `;
+      }
+      showDeliveryAdressForm();
+    });
+  }
+
+  showDeliveryAdressForm();
+
+};
+const sendForm = () => {
+  let sendBtn = document.querySelector('.order__btn');
+  let form = document.querySelector('form');
+
+  sendBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (cart.length > 0) {
+      let letterBody = `
+
+      `;
+
+      modal('modal__close', 'modal__content', 'modal', `
+      <p style="text-align: center;">Надсилання ...</p>
+      <br>
+      <img src="img/icons/loading.gif" alt="" style=" display: block; margin: 0 auto;">
+      `);
+
+      Email.send({
+        Host: "smtp.gmail.com",
+        Username: "svityaz.centr@gmail.com",
+        Password: "hgwwzjwldbtjunsu",
+        To: `svityaz.centr@gmail.com`,
+        From: "svityaz.centr@gmail.com",
+        Subject: "Зворотний звязок. Питання від відвідувача",
+        Body: letterBody,
+      }).then(() => {
+        modal('modal__close', 'modal__content', 'modal', `
+        <p style="text-align: center;">Замовлення успішно надіслано</p>
+      `);
+      }).catch(() => {
+        modal('modal__close', 'modal__content', 'modal', `
+          <p style="text-align: center;">Сталася помилка. Спробуйте пізніше</p>
+          `);
+      }).finally(() => {
+        form.reset();
+      });
+    } else {
+      modal('modal__close', 'modal__content', 'modal', `
+      <p style="text-align: center;">Корзина порожня</p>
+      `);
+    }
+
+  });
 };
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -920,7 +1002,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   try {
     changeDelivery();
-    
+    sendForm();
   } catch (error) {
     
   }

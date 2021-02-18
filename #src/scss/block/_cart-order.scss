@@ -4,16 +4,21 @@
   &+& {
     margin-top: 50px;
   }
+}
+
+.order__block-row {
+  display: flex;
+  flex-direction: column;
 
   &:nth-child(2) {
-    display: flex;
-    justify-content: space-between;
+    margin-top: 50px;
+    display: block;
   }
 
-  &:nth-child(3) {
-    .order__block-item {
-      width: 100%;
-    }
+
+  @media (min-width: 992px) {
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
@@ -22,6 +27,7 @@
 .order__table {
   border-collapse: collapse;
   width: 100%;
+  min-height: 100px;
 }
 
 .order__table-head {
@@ -69,6 +75,16 @@
 
 
 .order__table-body {
+  position: relative;
+  overflow: hidden;
+
+  .cart__content-empty {
+    padding-top: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
   tr {
     border: 1px solid rgb(208, 208, 208);
 
@@ -113,7 +129,19 @@
 .order__block-item {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 100%;
+
+  &+& {
+    margin-top: 30px;
+
+    @media (min-width: 992px) {
+      margin-top: 0px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    width: 30%;
+  }
 }
 
 .order__title {
@@ -189,10 +217,11 @@
   display: flex;
   flex-direction: column;
 }
+
 .order__pay-features-wrapper {
-  background-color: rgb(255, 220, 154);
+  background-color: rgb(255, 234, 194);
   border-radius: 5px;
-  border: 1px solid #007AFF ;
+  border: 1px solid #007AFF;
   padding: 10px;
   margin-top: 20px;
   line-height: 1.2;

@@ -1,5 +1,6 @@
 ﻿@@include('../../node_modules/swiper/swiper-bundle.min.js')
 @@include('module/_modal.js')
+@@include('module/_smtpjs.js')
 @@include('module/_shortMassage.js')
 @@include('module/_modal-mr.js')
 @@include('module/_tabs.js')
@@ -12,6 +13,7 @@
 @@include('module/_range-slider.js')
 @@include('module/_store-filter.js')
 @@include('module/_change-delivery.js')
+@@include('module/_send-form.js')
 
 window.addEventListener("DOMContentLoaded", () => {
   'use strict';
@@ -143,7 +145,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   try {
     changeDelivery();
-    
+    sendForm();
   } catch (error) {
     
   }
