@@ -1991,7 +1991,6 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
 .order__table {
   border-collapse: collapse;
   width: 100%;
-  min-height: 100px;
 }
 
 .order__table-head {

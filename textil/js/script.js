@@ -908,8 +908,10 @@ const sendForm = (cart) => {
         return value;
       };
 
+      let total = 0;
 
       cart.forEach(elem => {
+        total += +(elem.productPrice * elem.productNumber);
         content += `
           <tr style="border: 1px solid rgb(208, 208, 208);">
             <td style="text-align: center; padding: 10px;">
@@ -957,7 +959,7 @@ const sendForm = (cart) => {
     
         <div style="margin-top: 20px; text-align: right; font-weight: 700;">
           <span>Всього:</span>
-          <span >0</span>
+          <span >${total.toFixed(2)}</span>
           <span>грн</span>
         </div>
     
@@ -1020,6 +1022,9 @@ const sendForm = (cart) => {
             `);
       }).finally(() => {
         form.reset();
+        cart = [];
+        localStorage.setItem('cartItems', (JSON.stringify(cart)));
+        cart(cart);
       });
 
     } else {
