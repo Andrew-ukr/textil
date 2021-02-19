@@ -17,6 +17,11 @@
 
 window.addEventListener("DOMContentLoaded", () => {
   'use strict';
+  let cartMain =[];
+
+  if (localStorage.getItem('cartItems')) {
+    cartMain = JSON.parse(localStorage.getItem('cartItems'));
+  }
   
   try {
     tabsInit('.tabs__header-item', '.tabs__content-item');
@@ -124,7 +129,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     openCart(); // при натисканні відкривається вікно корзини
-    cart();
+    cart(cartMain);
     storeFilter();
     rangeSlider();
     
@@ -145,7 +150,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   try {
     changeDelivery();
-    sendForm();
+    sendForm(cartMain);
   } catch (error) {
     
   }

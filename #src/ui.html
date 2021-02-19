@@ -44,6 +44,96 @@
       </div>
     </div>
   </div>
+
+
+
+
+
+<div>
+  <table style="border-collapse: collapse;  width: 100%;  min-height: 100px;" >
+    <thead style="background-color: #f3f3f3; border: 1px solid rgb(208, 208, 208);">
+      <tr>
+        <th style="padding: 10px; min-width: 150px;" >Фото</th>
+        <th style="padding: 10px; min-width: 150px;" >Назва товару</th>
+        <th style="padding: 10px; min-width: 150px;" >Кількість</th>
+        <th style="padding: 10px; min-width: 150px;" >Ціна</th>
+        <th style="padding: 10px; min-width: 150px;" >Всього</th>
+        <th ></th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr style="border: 1px solid rgb(208, 208, 208);">
+        <td style="text-align: center; padding: 10px;">
+          <a href="${elem.link}">
+            <img style="display: block; width: 100%; height: 100%; pointer-events: none;" src="${checkImgPath(elem.img)}" alt="">
+          </a>
+        </td>
+        <td style="text-align: center; padding: 10px;">
+          <a href="${elem.link}">${elem.title} / наволочка ${elem.productSizeNavolochka}</a>
+        </td>
+        <td style="text-align: center; padding: 10px;">
+          ${elem.productNumber}
+        </td>
+        <td style="text-align: center; padding: 10px;">
+          <p>${(elem.productPrice)} грн</p>
+        </td>
+        <td style="text-align: center; padding: 10px;">
+          <p>${elem.productPrice * elem.productNumber} грн</p>
+        </td>
+        <td style="text-align: center; padding: 10px;">
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <div style="margin-top: 20px; text-align: right; font-weight: 700;">
+    <span>Всього:</span>
+    <span >0</span>
+    <span>грн</span>
+  </div>
+
+  <div style="background-color: #f3f3f3; border: 1px solid rgb(208, 208, 208);display: flex; align-items: center; border: 1px solid rgb(208, 208, 208);  padding: 10px;  font-weight: 600;  margin-top: 20px;" >
+    <span>Контактна інформація</span>
+  </div>
+  <ul>
+    <li style="line-height: 1.5;">Імя: </li>
+    <li style="line-height: 1.5;">Прізвище: </li>
+    <li style="line-height: 1.5;">По батькові: </li>
+    <li style="line-height: 1.5;">Телефон: </li>
+    <li style="line-height: 1.5;">E-mail: </li>
+  </ul>
+
+  <div style="background-color: #f3f3f3; border: 1px solid rgb(208, 208, 208);display: flex; align-items: center; border: 1px solid rgb(208, 208, 208);  padding: 10px;  font-weight: 600;  margin-top: 20px;" >
+    <span>Спосіб доставки</span>
+  </div>
+  <ul>
+    <li style="line-height: 1.5;">№</li>
+    <li style="line-height: 1.5;">№</li>
+    <li style="line-height: 1.5;">№</li>
+    <li style="line-height: 1.5;">№</li>
+    <li style="line-height: 1.5;">№</li>
+    <li style="line-height: 1.5;">№</li>
+  </ul>
+
+  <div style="background-color: #f3f3f3; border: 1px solid rgb(208, 208, 208);display: flex; align-items: center; border: 1px solid rgb(208, 208, 208);  padding: 10px;  font-weight: 600;  margin-top: 20px;" >
+    <span>Спосіб оплати</span>
+  </div>
+  <ul>
+    <li style="line-height: 1.5;">№</li>
+  </ul>
+
+</div>
+
+
+
+
+
+
+
+
+
+
 </body>
 
 </html>

@@ -1,15 +1,12 @@
-const cart = () => {
+const cart = (cart) => {
 
-  let cart = [];
-  if (localStorage.getItem('cartItems')) {
-    cart = JSON.parse(localStorage.getItem('cartItems'));
-  }
   let productItem = document.querySelectorAll('[data-cart="productItem"]');
   const cartContent = document.querySelector('.cart__content');
   const cartTableContent = document.querySelector('.order__table-body');
   const cartItems = document.querySelector('.cart__total-row-span-number');
   const cartItemsSum = document.querySelector('.cart__total-row-span-sum');
   const topTotalSum = document.querySelector('[data-cart="topSum"]');
+  const tableTotalSum = document.querySelector('[data-cart="totalSum"]');
   let totalSum = 0;
   let totalquantity = 0;
 
@@ -79,34 +76,33 @@ const cart = () => {
 
         cartItemsTableList += `
         <tr class="order__item">
-        <td class="order__table-photo">
-          <a href="${elem.link}">
-            <img src="${checkImgPath(elem.img)}" alt="">
-          </a>
-        </td>
-        <td class="order__table-name">
-          <a href="${elem.link}">${elem.title} / наволочка ${elem.productSizeNavolochka}</a>
-        </td>
-        <td class="order__table-qty">
-          <div class="cart__content-number product__quantity">
-            <div class="product__quantity-minus">-</div>
-            <div class="product__quantity-number" data-cart="productNumber">${elem.productNumber}</div>
-            <div class="product__quantity-plus">+</div>
-          </div>
-        </td>
-        <td class="order__table-price">
-          <p>${(elem.productPrice)} грн</p>
-        </td>
-        <td class="order__table-sum">
-          <p>${elem.productPrice * elem.productNumber} грн</p>
-        </td>
-        <td class="order__table-del">
-          <button class="order__btn-del">
-            <img src="img/icons/close.svg" alt="">
-          </button>
-        </td>
-
-      </tr>
+          <td class="order__table-photo">
+            <a href="${elem.link}">
+              <img src="${checkImgPath(elem.img)}" alt="">
+            </a>
+          </td>
+          <td class="order__table-name">
+            <a href="${elem.link}">${elem.title} / наволочка ${elem.productSizeNavolochka}</a>
+          </td>
+          <td class="order__table-qty">
+            <div class="cart__content-number product__quantity">
+              <div class="product__quantity-minus">-</div>
+              <div class="product__quantity-number" data-cart="productNumber">${elem.productNumber}</div>
+              <div class="product__quantity-plus">+</div>
+            </div>
+          </td>
+          <td class="order__table-price">
+            <p>${(elem.productPrice)} грн</p>
+          </td>
+          <td class="order__table-sum">
+            <p>${elem.productPrice * elem.productNumber} грн</p>
+          </td>
+          <td class="order__table-del">
+            <button class="order__btn-del">
+              <img src="img/icons/close.svg" alt="">
+            </button>
+          </td>
+        </tr>
         `;
       });
 
@@ -138,6 +134,9 @@ const cart = () => {
       topTotalSum.innerHTML = ``;
       cartImg.setAttribute('src', 'img/icons/cart.svg');
       cartImg.previousElementSibling.setAttribute('srcset', 'img/icons/cart.svg');
+      try {
+        tableTotalSum.innerHTML = `0.00`;
+      } catch (error) {}
     }
   }
 
@@ -155,8 +154,7 @@ const cart = () => {
     topTotalSum.innerHTML = `${totalSum.toFixed(2)} грн.`;
     topTotalSum.innerHTML = `${totalSum.toFixed(2)} грн.`;
     try {
-    document.querySelector('[data-cart="totalSum"]').innerHTML = totalSum.toFixed(2);
-      
+      tableTotalSum.innerHTML = totalSum.toFixed(2);
     } catch (error) {}
   }
 
