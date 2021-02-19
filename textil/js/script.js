@@ -913,12 +913,12 @@ const sendForm = (cart) => {
         content += `
           <tr style="border: 1px solid rgb(208, 208, 208);">
             <td style="text-align: center; padding: 10px;">
-              <a href="${elem.link}">
-                <img style="display: block; width: 90px; height: 90px; pointer-events: none;" src="${(elem.img)}" alt="">
+              <a href="https://andrew-ukr.github.io/textil/textil${elem.link}">
+                <img style="display: block; width: 90px; height: 90px; pointer-events: none;" src="https://andrew-ukr.github.io/textil/textil/${(elem.img)}" alt="">
               </a>
             </td>
             <td style="text-align: center; padding: 10px;">
-              <a href="${elem.link}">${elem.title} / наволочка ${elem.productSizeNavolochka}</a>
+              <a href="https://andrew-ukr.github.io/textil/textil${elem.link}">${elem.title} / наволочка ${elem.productSizeNavolochka}</a>
             </td>
             <td style="text-align: center; padding: 10px;">
               ${elem.productNumber}
