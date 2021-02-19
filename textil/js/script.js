@@ -827,6 +827,7 @@ const changeDelivery = () => {
 const sendForm = (cart) => {
   let form = document.querySelector('form');
 
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -913,7 +914,7 @@ const sendForm = (cart) => {
           <tr style="border: 1px solid rgb(208, 208, 208);">
             <td style="text-align: center; padding: 10px;">
               <a href="${elem.link}">
-                <img style="display: block; width: 100%; height: 100%; pointer-events: none;" src="${(elem.img)}" alt="">
+                <img style="display: block; width: 90px; height: 90px; pointer-events: none;" src="${(elem.img)}" alt="">
               </a>
             </td>
             <td style="text-align: center; padding: 10px;">
@@ -994,31 +995,39 @@ const sendForm = (cart) => {
       return letterBody;
     }
 
-    modal('modal__close', 'modal__content', 'modal', `
-      <p style="text-align: center;">Надсилання ...</p>
-      <br>
-      <img src="img/icons/loading.gif" alt="" style=" display: block; margin: 0 auto;">
-      `);
+    if (cart.length > 0) {
+      modal('modal__close', 'modal__content', 'modal', `
+        <p style="text-align: center;">Надсилання ...</p>
+        <br>
+        <img src="img/icons/loading.gif" alt="" style=" display: block; margin: 0 auto;">
+        `);
+  
+      Email.send({
+        Host: "smtp.gmail.com",
+        Username: "svityaz.centr@gmail.com",
+        Password: "hgwwzjwldbtjunsu",
+        To: `svityaz.centr@gmail.com, Tourcentr@ukr.net`,
+        From: "svityaz.centr@gmail.com",
+        Subject: "ЗАМОВЛЕННЯ",
+        Body: formBody(),
+      }).then(() => {
+        modal('modal__close', 'modal__content', 'modal', `
+          <p style="text-align: center;">Замовлення успішно надіслано</p>
+        `);
+      }).catch(() => {
+        modal('modal__close', 'modal__content', 'modal', `
+            <p style="text-align: center;">Сталася помилка. Спробуйте пізніше</p>
+            `);
+      }).finally(() => {
+        form.reset();
+      });
 
-    Email.send({
-      Host: "smtp.gmail.com",
-      Username: "svityaz.centr@gmail.com",
-      Password: "hgwwzjwldbtjunsu",
-      To: `svityaz.centr@gmail.com, Tourcentr@ukr.net`,
-      From: "svityaz.centr@gmail.com",
-      Subject: "ЗАМОВЛЕННЯ",
-      Body: formBody(),
-    }).then(() => {
+    } else {
       modal('modal__close', 'modal__content', 'modal', `
-        <p style="text-align: center;">Замовлення успішно надіслано</p>
+      <p style="text-align: center;">Корзина пуста</p>
       `);
-    }).catch(() => {
-      modal('modal__close', 'modal__content', 'modal', `
-          <p style="text-align: center;">Сталася помилка. Спробуйте пізніше</p>
-          `);
-    }).finally(() => {
-      form.reset();
-    });
+    }
+
   });
 };
 
