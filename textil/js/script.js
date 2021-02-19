@@ -237,7 +237,7 @@ const cart = (cart) => {
   function checkingRepetition(elem) {
     let title = elem.querySelector('[data-cart="productTitle"]').innerText;
     let navolochka = elem.querySelector('[data-cart="productSizeNavolochka"]').value;
-
+    
     let newCart = cart.some(item => {
       return (item.title === title && item.productSizeNavolochka === navolochka);
     });
@@ -370,7 +370,6 @@ const cart = (cart) => {
     productItem.forEach(elem => {
       elem.addEventListener('click', (e) => {
         if (e.target && e.target.dataset.cart === 'addBtn') {
-
           if (!checkingRepetition(elem)) {
             addItem(elem);
             renderCartItems();
@@ -525,7 +524,7 @@ const cart = (cart) => {
 
     }
   };
-const storeFilter = () => {
+const storeFilter = (cartMain) => {
   const primaryProductArray = [];
   let productItem = document.querySelectorAll('[data-cart="productItem"]');
   let filterBtnBlock = document.querySelector('.main__block-inner');
@@ -640,7 +639,7 @@ const storeFilter = () => {
       <div class="${elem.cartClass}" data-cart="productItem">
       <div class="card__inner">
         <div class="card__img-block">
-          <a class="card__img-link" href="${elem.cartLink}">
+          <a class="card__img-link" href="${elem.cartLink}" data-cart="linkPath">
             <img class="card__img" src="${elem.imgPath}" alt="" data-cart="img">
           </a>
         </div>
@@ -732,7 +731,7 @@ const storeFilter = () => {
     buildFilteredArray(newArray, filterItemsAvalible);
     bildNewCardList(newArray);
 
-    cart();
+    cart(cartMain);
   });
 
   checkFilterItems();
@@ -839,6 +838,80 @@ const sendForm = (cart) => {
       let tel = form.querySelector('.order__input[name="Телефон"]').value;
       let email = form.querySelector('.order__input[name="E-mail"]').value;
 
+      let typOfDelivery = () => {
+        let delivery = document.querySelectorAll('.order__radio[name="delivery"]');
+        let value;
+        delivery.forEach(elem => {
+          if (elem.checked) {
+            value = elem.nextElementSibling.innerText;
+          }
+        });
+        console.log(value);
+        return value;
+      };
+
+      let inputDelivery = () => {
+        let value;
+        if (typOfDelivery() === 'Укрпошта') {
+          let index = form.querySelector('.order__input[name="Індекс"]').value;
+          let city = form.querySelector('.order__input[name="Місто"]').value;
+          let street = form.querySelector('.order__input[name="Вулиця"]').value;
+          let house = form.querySelector('.order__input[name="№ будинку"]').value;
+          let apartment = form.querySelector('.order__input[name="№ квартири"]').value;
+
+          value = `
+          <li style="line-height: 1.5;">Індекс : ${index}</li>
+          <li style="line-height: 1.5;">Місто : ${city}</li>
+          <li style="line-height: 1.5;">Вулиця : ${street}</li>
+          <li style="line-height: 1.5;">№ будинку : ${house}</li>
+          <li style="line-height: 1.5;">№ квартири : ${apartment}</li>
+          `;
+        }
+
+        if (typOfDelivery() === 'Нова Пошта') {
+          let selector = form.querySelector('.order__select');
+
+          if (selector.selectedIndex === 0) {
+            let city = form.querySelector('.order__input[name="Місто"]').value;
+            let department = form.querySelector('.order__input[name="№ відділення"]').value;
+  
+            value = `
+            <li style="line-height: 1.5;">Місто : ${city}</li>
+            <li style="line-height: 1.5;">№ відділення : ${department}</li>
+            `;
+          } else {
+            let city = form.querySelector('.order__input[name="Місто"]').value;
+            let street = form.querySelector('.order__input[name="Вулиця"]').value;
+            let house = form.querySelector('.order__input[name="№ будинку"]').value;
+            let apartment = form.querySelector('.order__input[name="№ квартири"]').value;
+  
+            value = `
+            <li style="line-height: 1.5;">Місто : ${city}</li>
+            <li style="line-height: 1.5;">Вулиця : ${street}</li>
+            <li style="line-height: 1.5;">№ будинку : ${house}</li>
+            <li style="line-height: 1.5;">№ квартири : ${apartment}</li>
+            `;
+          }
+        }
+
+        return value;
+      };
+
+      let typOfPay = () => {
+        let delivery = document.querySelectorAll('.order__radio[name="pay"]');
+        let value;
+        delivery.forEach(elem => {
+          if (elem.checked) {
+            value = elem.nextElementSibling.innerText;
+          }
+        });
+        return value;
+      };
+
+
+
+
+
 
       cart.forEach(elem => {
         content += `
@@ -909,12 +982,8 @@ const sendForm = (cart) => {
         </div>
 
         <ul>
-          <li style="line-height: 1.5;">№</li>
-          <li style="line-height: 1.5;">№</li>
-          <li style="line-height: 1.5;">№</li>
-          <li style="line-height: 1.5;">№</li>
-          <li style="line-height: 1.5;">№</li>
-          <li style="line-height: 1.5;">№</li>
+          <li style="line-height: 1.5;">Оператор ${typOfDelivery()}</li>
+          ${inputDelivery()}
         </ul>
     
         <div style="background-color: #f3f3f3; border: 1px solid rgb(208, 208, 208);display: flex; align-formBody: center; border: 1px solid rgb(208, 208, 208);  padding: 10px;  font-weight: 600;  margin-top: 20px;" >
@@ -922,7 +991,7 @@ const sendForm = (cart) => {
         </div>
 
         <ul>
-          <li style="line-height: 1.5;">№</li>
+          <li style="line-height: 1.5;">${typOfPay()}</li>
         </ul>
       </div>
     `;
@@ -965,7 +1034,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem('cartItems')) {
     cartMain = JSON.parse(localStorage.getItem('cartItems'));
   }
-  
+
   try {
     tabsInit('.tabs__header-item', '.tabs__content-item');
     tabsInit('.product__tabs-list-item', '.product__tabs-content-item');
@@ -1073,7 +1142,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     openCart(); // при натисканні відкривається вікно корзини
     cart(cartMain);
-    storeFilter();
+    storeFilter(cartMain);
     rangeSlider();
     
   } catch (error) {

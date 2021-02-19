@@ -29,7 +29,7 @@ const cart = (cart) => {
   function checkingRepetition(elem) {
     let title = elem.querySelector('[data-cart="productTitle"]').innerText;
     let navolochka = elem.querySelector('[data-cart="productSizeNavolochka"]').value;
-
+    
     let newCart = cart.some(item => {
       return (item.title === title && item.productSizeNavolochka === navolochka);
     });
@@ -162,7 +162,6 @@ const cart = (cart) => {
     productItem.forEach(elem => {
       elem.addEventListener('click', (e) => {
         if (e.target && e.target.dataset.cart === 'addBtn') {
-
           if (!checkingRepetition(elem)) {
             addItem(elem);
             renderCartItems();

@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem('cartItems')) {
     cartMain = JSON.parse(localStorage.getItem('cartItems'));
   }
-  
+
   try {
     tabsInit('.tabs__header-item', '.tabs__content-item');
     tabsInit('.product__tabs-list-item', '.product__tabs-content-item');
@@ -130,7 +130,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     openCart(); // при натисканні відкривається вікно корзини
     cart(cartMain);
-    storeFilter();
+    storeFilter(cartMain);
     rangeSlider();
     
   } catch (error) {

@@ -1,4 +1,4 @@
-const storeFilter = () => {
+const storeFilter = (cartMain) => {
   const primaryProductArray = [];
   let productItem = document.querySelectorAll('[data-cart="productItem"]');
   let filterBtnBlock = document.querySelector('.main__block-inner');
@@ -113,7 +113,7 @@ const storeFilter = () => {
       <div class="${elem.cartClass}" data-cart="productItem">
       <div class="card__inner">
         <div class="card__img-block">
-          <a class="card__img-link" href="${elem.cartLink}">
+          <a class="card__img-link" href="${elem.cartLink}" data-cart="linkPath">
             <img class="card__img" src="${elem.imgPath}" alt="" data-cart="img">
           </a>
         </div>
@@ -205,7 +205,7 @@ const storeFilter = () => {
     buildFilteredArray(newArray, filterItemsAvalible);
     bildNewCardList(newArray);
 
-    cart();
+    cart(cartMain);
   });
 
   checkFilterItems();
