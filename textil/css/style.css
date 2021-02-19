@@ -66,6 +66,7 @@ button::-moz-focus-inner {
 a,
 a:visited {
   text-decoration: none;
+  display: block;
 }
 
 a:hover {
@@ -1994,6 +1995,7 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
 }
 
 .order__table-head {
+  display: none;
   background-color: #f3f3f3;
   border: 1px solid #d0d0d0;
 }
@@ -2014,6 +2016,38 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
 .order__table-photo img {
   width: 90px;
   height: 90px;
+}
+
+.order__table-price {
+  position: relative;
+  margin-top: 10px;
+}
+
+.order__table-price::before {
+  position: absolute;
+  content: 'Ціна';
+  top: -12px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #969696;
+}
+
+.order__table-sum {
+  position: relative;
+  margin-top: 10px;
+}
+
+.order__table-sum::before {
+  position: absolute;
+  content: 'Вартість';
+  top: -12px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #969696;
 }
 
 .order__btn-del {
@@ -2044,13 +2078,39 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
   border: 1px solid #d0d0d0;
 }
 
-.order__table-body td {
+.order__table-body tr td {
   text-align: center;
   padding: 10px;
 }
 
+.order__table-body .order__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.order__table-qty {
+  position: relative;
+  margin-top: 10px;
+}
+
 .order__table-qty .product__quantity {
   margin: 0 auto;
+}
+
+.order__table-qty::before {
+  position: absolute;
+  content: 'Кількість';
+  top: -12px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #969696;
 }
 
 .order__total {
@@ -2349,6 +2409,38 @@ input[type="range"]:nth-child(2)::-webkit-slider-thumb:active {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+  }
+
+  .order__table-head {
+    display: table-row-group;
+  }
+
+  .order__table-price::before {
+    content: '';
+  }
+
+  .order__table-price {
+    margin-top: 0px;
+  }
+
+  .order__table-sum::before {
+    content: '';
+  }
+
+  .order__table-sum {
+    margin-top: 0px;
+  }
+
+  .order__table-body .order__item {
+    display: table-row;
+  }
+
+  .order__table-qty::before {
+    content: '';
+  }
+
+  .order__table-qty::before {
+    margin-top: 0;
   }
 
   .order__block-item + .order__block-item {

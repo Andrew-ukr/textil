@@ -15,7 +15,6 @@
     display: block;
   }
 
-
   @media (min-width: 992px) {
     flex-direction: row;
     justify-content: space-between;
@@ -31,8 +30,13 @@
 }
 
 .order__table-head {
+  display: none;
   background-color: $backgroundColor;
   border: 1px solid rgb(208, 208, 208);
+
+  @media (min-width: 992px) {
+    display: table-row-group;
+  }
 
   th {
     padding: 10px;
@@ -57,9 +61,50 @@
 
 .order__table-quantity {}
 
-.order__table-price {}
+.order__table-price {
+  position: relative;
+  margin-top: 10px;
 
-.order__table-sum {}
+  &::before {
+    position: absolute;
+    content: 'Ціна';
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(150, 150, 150);
+
+    @media (min-width: 992px) {
+      content: '';
+    }
+  }
+
+  @media (min-width: 992px) {
+    margin-top: 0px;
+  }
+}
+
+.order__table-sum {
+  position: relative;
+  margin-top: 10px;
+
+  &::before {
+    position: absolute;
+    content: 'Вартість';
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(150, 150, 150);
+
+    @media (min-width: 992px) {
+      content: '';
+    }
+  }
+
+  @media (min-width: 992px) {
+    margin-top: 0px;
+
+  }
+}
 
 .order__btn-del {
   width: 15px;
@@ -72,7 +117,6 @@
     pointer-events: none;
   }
 }
-
 
 .order__table-body {
   position: relative;
@@ -88,18 +132,48 @@
   tr {
     border: 1px solid rgb(208, 208, 208);
 
+
+    td {
+      text-align: center;
+      padding: 10px;
+    }
   }
 
-  td {
-    text-align: center;
-    padding: 10px;
+  .order__item {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 992px) {
+      display: table-row;
+    }
   }
 }
 
 .order__table-qty {
+  position: relative;
+  margin-top: 10px;
+
   .product__quantity {
     margin: 0 auto;
   }
+
+  &::before {
+    position: absolute;
+    content: 'Кількість';
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(150, 150, 150);
+
+    @media (min-width: 992px) {
+      content: '';
+    }
+
+    @media (min-width: 992px) {
+      margin-top: 0;
+    }
+  }
+
 }
 
 .cart__content-number {}
