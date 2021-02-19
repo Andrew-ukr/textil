@@ -846,7 +846,6 @@ const sendForm = (cart) => {
             value = elem.nextElementSibling.innerText;
           }
         });
-        console.log(value);
         return value;
       };
 
@@ -907,10 +906,6 @@ const sendForm = (cart) => {
         });
         return value;
       };
-
-
-
-
 
 
       cart.forEach(elem => {
@@ -1009,7 +1004,7 @@ const sendForm = (cart) => {
       Host: "smtp.gmail.com",
       Username: "svityaz.centr@gmail.com",
       Password: "hgwwzjwldbtjunsu",
-      To: `svityaz.centr@gmail.com`,
+      To: `svityaz.centr@gmail.com, Tourcentr@ukr.net`,
       From: "svityaz.centr@gmail.com",
       Subject: "ЗАМОВЛЕННЯ",
       Body: formBody(),
