@@ -150,7 +150,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   try {
     changeDelivery();
-    sendForm(cartMain);
+    sendForm(cartMain, cart);
   } catch (error) {
     
   }

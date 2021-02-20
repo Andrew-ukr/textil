@@ -1,4 +1,4 @@
-const sendForm = (cart) => {
+const sendForm = (cart, func) => {
   let form = document.querySelector('form');
 
 
@@ -209,8 +209,7 @@ const sendForm = (cart) => {
         form.reset();
         cart = [];
         localStorage.setItem('cartItems', (JSON.stringify(cart)));
-
-        // очистка корзини
+        func(cart); // очистка корзини
       });
 
     } else {
