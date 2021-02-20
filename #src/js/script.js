@@ -14,6 +14,7 @@
 @@include('module/_store-filter.js')
 @@include('module/_change-delivery.js')
 @@include('module/_send-form.js')
+@@include('module/_send-email.js')
 
 window.addEventListener("DOMContentLoaded", () => {
   'use strict';
@@ -132,11 +133,12 @@ window.addEventListener("DOMContentLoaded", () => {
     cart(cartMain);
     storeFilter(cartMain);
     rangeSlider();
-    
-  } catch (error) {
-    
-  }
+  } catch (error) {}
   
+  try {
+    sendEmail(); // підписка на новини (надсилання форми)
+  } catch (error) {}
+
   try {
     quantity('product__quantity', 'product__quantity-number'); // при натисканні кнопок + / - змінюється кількість продукці\
 
@@ -144,14 +146,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     selectProdPrice(); // при події селектора вибору розміру комплекту відбувається зміна поточної ціни + змінюється назва заголовку товару 
 
-  } catch (error) {
-    
-  }
+  } catch (error) {}
 
   try {
     changeDelivery();
     sendForm(cartMain, cart);
-  } catch (error) {
-    
-  }
+  } catch (error) {}
 });

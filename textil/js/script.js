@@ -859,7 +859,6 @@ const changeDelivery = () => {
 const sendForm = (cart, func) => {
   let form = document.querySelector('form');
 
-
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -1078,6 +1077,41 @@ const sendForm = (cart, func) => {
 
   });
 };
+const sendEmail = () => {
+  let form = document.querySelector('form.cta__input-wrapper');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let inputValue = form.querySelector('.cta__input').value;
+
+    modal('modal__close', 'modal__content', 'modal', `
+    <p style="text-align: center;">Надсилання ...</p>
+    <br>
+    <img src="img/icons/loading.gif" alt="" style=" display: block; margin: 0 auto;">
+    `);
+
+    Email.send({
+      Host: "smtp.gmail.com",
+      Username: "svityaz.centr@gmail.com",
+      Password: "iykdxgvdcztlatek",
+      To: `svityaz.centr@gmail.com`,
+      From: "svityaz.centr@gmail.com",
+      Subject: "ПІДПИСКА",
+      Body: inputValue,
+    }).then(() => {
+      modal('modal__close', 'modal__content', 'modal', `
+      <p style="text-align: center;">Успішно надіслано</p>
+    `);
+    }).catch(() => {
+      modal('modal__close', 'modal__content', 'modal', `
+        <p style="text-align: center;">Сталася помилка. Спробуйте пізніше</p>
+        `);
+    }).finally(() => {
+      form.reset();
+    });
+  });
+};
 
 window.addEventListener("DOMContentLoaded", () => {
   'use strict';
@@ -1196,11 +1230,12 @@ window.addEventListener("DOMContentLoaded", () => {
     cart(cartMain);
     storeFilter(cartMain);
     rangeSlider();
-    
-  } catch (error) {
-    
-  }
+  } catch (error) {}
   
+  try {
+    sendEmail(); // підписка на новини (надсилання форми)
+  } catch (error) {}
+
   try {
     quantity('product__quantity', 'product__quantity-number'); // при натисканні кнопок + / - змінюється кількість продукці\
 
@@ -1208,14 +1243,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     selectProdPrice(); // при події селектора вибору розміру комплекту відбувається зміна поточної ціни + змінюється назва заголовку товару 
 
-  } catch (error) {
-    
-  }
+  } catch (error) {}
 
   try {
     changeDelivery();
     sendForm(cartMain, cart);
-  } catch (error) {
-    
-  }
+  } catch (error) {}
 });
