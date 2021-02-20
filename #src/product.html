@@ -69,17 +69,17 @@
               <h4 class="product__item-title">Розмір комплекту:</h4>
               <select class="product__select" name="select" id="select">
                 <option class="product__select-name" class="product__select-name" value="470">Півтораспальний</option>
-                <option class="product__select-name" class="product__select-name" value="550">Двоспальний</option>
-                <option class="product__select-name" class="product__select-name" value="600">Євро</option>
-                <option class="product__select-name" class="product__select-name" value="650">Сімейний</option>
+                <option class="product__select-name" value="550">Двоспальний</option>
+                <option class="product__select-name" value="600">Євро</option>
+                <option class="product__select-name" value="650">Сімейний</option>
               </select>
             </div>
 
             <div class="product__item">
               <h4 class="product__item-title">Розмір наволочки:</h4>
               <select class="product__select" name="select" id="select" data-cart="productSizeNavolochka">
-                <option value="70*70" selected>70 * 70</option>
-                <option value="50*70">50 * 70</option>
+                <option class="product__pillow-select-name" value="70*70" selected>70 * 70</option>
+                <option class="product__pillow-select-name" value="50*70">50 * 70</option>
               </select>
             </div>
 
@@ -111,7 +111,7 @@
               <table class="product__tabs-content-item-table table">
                 <tr class="table__row">
                   <td class="table__col">
-                    Країна виробник</td>
+                    Країна виробник тканини</td>
                   <td class="table__col"> Пакистан</td>
                 </tr>
                 <tr class="table__row">
@@ -123,6 +123,22 @@
                   <td class="table__col"> 80% бавовна</td>
                 </tr>
                 <tr class="table__row">
+                  <td class="table__col">Розмір комплекту</td>
+                  <td class="table__col" data-product="sizeName">Півтораспальний</td>
+                </tr>
+                <tr class="table__row">
+                  <td class="table__col">Підковдра, к-сть / ш * д</td>
+                  <td class="table__col" data-product="підковдра">1 шт / 150 * 215 см</td>
+                </tr>
+                <tr class="table__row">
+                  <td class="table__col">Простирадло, к-сть / ш * д</td>
+                  <td class="table__col" data-product="простирадло">1 шт / 150 * 220 см</td>
+                </tr>
+                <tr class="table__row">
+                  <td class="table__col">Наволочка, к-сть / ш * д</td>
+                  <td class="table__col">2 шт / <span data-product="наволочка">70 * 70 см</span></td>
+                </tr>
+                </tr>
                   <td class="table__col">Щільність, г/м²</td>
                   <td class="table__col">135</td>
                 </tr>
