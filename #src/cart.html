@@ -16,7 +16,7 @@
   </header>
 
   <main class="main">
-    <section class="order" >
+    <section class="order">
       <div class="container">
 
         <div class="order__block">
@@ -113,6 +113,11 @@
             <textarea class="order__texarea" name="Коментар до замовлення" id="" rows="5"
               placeholder="Ваш коментар"></textarea>
           </div>
+          
+          <div class="order__block-row">
+            <input type="checkbox" name="checkbox1" id="checkbox1" required>
+            <label for="checkbox1">Даю згоду на використання персональних даних</label>
+          </div>
 
           <div class="order__block-row">
             <button type="submit" class="order__btn _btn">
@@ -122,7 +127,7 @@
         </form>
       </div>
     </section>
-    
+
   </main>
 
   @@include('template/_footer.html')

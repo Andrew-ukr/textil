@@ -165,9 +165,9 @@ const cart = (cart) => {
           if (!checkingRepetition(elem)) {
             addItem(elem);
             renderCartItems();
-            shortMassage("modal-massage", "modal-massage__content", `Товар додано до корзину`, `#badc58`, 2);
+            shortMassage("modal-massage", "modal-massage__content", `Товар додано до корзину`, `#a9ffa9`, 2);
           } else {
-            shortMassage("modal-massage", "modal-massage__content", `Даний товар уже в корзині`, `#ffbe76`, 2);
+            shortMassage("modal-massage", "modal-massage__content", `Даний товар уже в корзині`, `#ffa9a9`, 2);
           }
         }
       });

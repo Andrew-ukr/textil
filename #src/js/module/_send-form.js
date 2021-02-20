@@ -12,6 +12,7 @@ const sendForm = (cart) => {
       let fatherName = form.querySelector('.order__input[name="По батькові"]').value;
       let tel = form.querySelector('.order__input[name="Телефон"]').value;
       let email = form.querySelector('.order__input[name="E-mail"]').value;
+      let coment = form.querySelector('.order__texarea[name="Коментар до замовлення"]').value;
 
       let typOfDelivery = () => {
         let delivery = document.querySelectorAll('.order__radio[name="delivery"]');
@@ -84,17 +85,20 @@ const sendForm = (cart) => {
 
       let total = 0;
 
+      let domenPath = 'https://andrew-ukr.github.io/textil/textil'; // прописати шлях до сайту
+
+
       cart.forEach(elem => {
         total += +(elem.productPrice * elem.productNumber);
         content += `
           <tr style="border: 1px solid rgb(208, 208, 208);">
             <td style="text-align: center; padding: 10px;">
-              <a href="https://andrew-ukr.github.io/textil/textil${elem.link}">
-                <img style="display: block; width: 90px; height: 90px; pointer-events: none;" src="https://andrew-ukr.github.io/textil/textil/${(elem.img)}" alt="">
+              <a href="${domenPath}${elem.link}">
+                <img style="display: block; width: 90px; height: 90px; pointer-events: none;" src="${domenPath}/${(elem.img)}" alt="">
               </a>
             </td>
             <td style="text-align: center; padding: 10px;">
-              <a href="https://andrew-ukr.github.io/textil/textil${elem.link}">${elem.title} / наволочка ${elem.productSizeNavolochka}</a>
+              <a href="${domenPath}${elem.link}">${elem.title} / наволочка ${elem.productSizeNavolochka}</a>
             </td>
             <td style="text-align: center; padding: 10px;">
               ${elem.productNumber}
@@ -113,7 +117,7 @@ const sendForm = (cart) => {
 
       let letterBody = `
       <div>
-        <table style="border-collapse: collapse;  width: 100%;  min-height: 100px;" >
+        <table style="border-collapse: collapse;  width: 100%;" >
           <thead style="background-color: #f3f3f3; border: 1px solid rgb(208, 208, 208);">
             <tr>
               <th style="padding: 10px; min-width: 100px;" >Фото</th>
@@ -165,6 +169,13 @@ const sendForm = (cart) => {
         <ul>
           <li style="line-height: 1.5;">${typOfPay()}</li>
         </ul>
+
+        <div style="background-color: #f3f3f3; border: 1px solid rgb(208, 208, 208);display: flex; align-formBody: center; border: 1px solid rgb(208, 208, 208);  padding: 10px;  font-weight: 600;  margin-top: 20px;" >
+          <span>Коментар до замовлення</span>
+        </div>
+
+        <p style="line-height: 1.5;">${coment}</p>
+
       </div>
     `;
 
@@ -181,8 +192,8 @@ const sendForm = (cart) => {
       Email.send({
         Host: "smtp.gmail.com",
         Username: "svityaz.centr@gmail.com",
-        Password: "hgwwzjwldbtjunsu",
-        To: `svityaz.centr@gmail.com, Tourcentr@ukr.net`,
+        Password: "iykdxgvdcztlatek",
+        To: `svityaz.centr@gmail.com`,
         From: "svityaz.centr@gmail.com",
         Subject: "ЗАМОВЛЕННЯ",
         Body: formBody(),
@@ -198,7 +209,8 @@ const sendForm = (cart) => {
         form.reset();
         cart = [];
         localStorage.setItem('cartItems', (JSON.stringify(cart)));
-        cart(cart);
+
+        // очистка корзини
       });
 
     } else {

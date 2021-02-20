@@ -39,7 +39,7 @@ const changeDelivery = () => {
     if (e.target && e.target.id === 'pay2' && e.target.checked) {
       payContent.innerHTML = `
       <div class="order__pay-features-wrapper">
-        Віправка накладеним платижем здійснюється при передоплаті за доставку
+        Відправлення накладеним платижем здійснюється при передоплаті за доставку
       </div>
       `;
     }
